@@ -15,7 +15,7 @@ import java.util.List;
 
 public class ExcelData {
 
-    private final String filePath;
+    private final String filePath ;
     private XSSFWorkbook workbook = null;
     private Sheet sheet = null;
     private Row row = null;

@@ -10,8 +10,8 @@ import static config.BaseConfig.properties;
 
 public class LoginPageTest extends BasePage {
 
-    LoginPage loginPage;
-    HomePage homePage;
+    LoginPage loginPage= new LoginPage();
+    HomePage homePage = new HomePage();
 
     public LoginPageTest()
     {

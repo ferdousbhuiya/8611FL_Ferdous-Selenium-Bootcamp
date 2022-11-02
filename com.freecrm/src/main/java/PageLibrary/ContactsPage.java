@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
 public class ContactsPage extends BasePage {
-public BasePage basePage;
+
    public ContactsPage()
     {
         PageFactory.initElements(driver, this);
@@ -57,6 +57,7 @@ public BasePage basePage;
 
     public void switchToFrame()
     {
+        BasePage basePage = new BasePage();
         basePage.switchToFrameByElement(frameName);
     }
 

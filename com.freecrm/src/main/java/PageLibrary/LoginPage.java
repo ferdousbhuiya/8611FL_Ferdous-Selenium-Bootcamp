@@ -12,14 +12,14 @@ public class LoginPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-
-    @FindBy(xpath = "//input[@name='username']")
+BasePage basePage= new BasePage();
+    @FindBy(name = "username")
     WebElement username;
 
-    @FindBy(xpath = "//input[@name='password']")
+    @FindBy(xpath = "//input[@type='password']")
     WebElement password;
 
-    @FindBy(xpath="//input[@value='Login']")
+    @FindBy(xpath="//input[@type='submit']")
     WebElement loginBtn;
 
     @FindBy(xpath="//a[contains(text(),'Sign Up')]")
@@ -41,7 +41,7 @@ public class LoginPage extends BasePage {
     public HomePage login(String un, String pwd){
         username.sendKeys(un);
         password.sendKeys(pwd);
-        //loginBtn.click();
+        loginBtn.click();
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("arguments[0].click();", loginBtn);
 

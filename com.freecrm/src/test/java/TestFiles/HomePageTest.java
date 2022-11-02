@@ -7,18 +7,19 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class HomePageTest extends BasePage {
-    public HomePage homePage;
-    public ContactsPage contactsPage;
+    HomePage homePage= new HomePage();
+    ContactsPage contactsPage= new ContactsPage();
 
 
     @Test(priority=1)
     public void verifyHomePageTitleTest(){
         String homePageTitle = homePage.verifyHomePageTitle();
-        Assert.assertEquals(homePageTitle, "CRMPRO","Home page title not matched");
+        Assert.assertEquals(homePageTitle, "CRMPRO - CRM software for customer relationship management, sales, and support.","Home page title matched");
     }
 
     @Test(priority=2)
     public void verifyUserNameTest(){
+
         contactsPage.switchToFrame();
         Assert.assertTrue(homePage.verifyCorrectUserName());
     }

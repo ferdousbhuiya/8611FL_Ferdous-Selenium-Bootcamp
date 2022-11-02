@@ -13,7 +13,7 @@ public class ContactsPageTest extends BasePage {
     LoginPage loginPage;
     HomePage homePage;
 
-    ContactsPage contactsPage;
+    ContactsPage contactsPage= new ContactsPage();
     ExcelData excelData;
     String sheetName = "contacts";
 
@@ -42,6 +42,7 @@ public class ContactsPageTest extends BasePage {
 
     @DataProvider
     public Object[][] getCRMTestData(){
+        new ExcelData("TestData/FreeCrmTestData.xlsx");
         Object data[][] = excelData.readStringArrays(sheetName);
         return data;
     }
@@ -50,7 +51,7 @@ public class ContactsPageTest extends BasePage {
     @Test(priority=4, dataProvider="getCRMTestData")
     public void validateCreateNewContact(String title, String firstName, String lastName, String company){
         homePage.clickOnNewContactLink();
-        //contactsPage.createNewContact("Mr.", "Tom", "Peter", "Google");
+        contactsPage.createNewContact("Mr.", "Tom", "Peter", "Google");
         contactsPage.createNewContact(title, firstName, lastName, company);
 
     }
