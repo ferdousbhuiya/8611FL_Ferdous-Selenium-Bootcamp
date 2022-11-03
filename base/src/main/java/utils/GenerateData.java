@@ -51,7 +51,9 @@ public class GenerateData {
     public static String mobilePhone() {
         return faker.phoneNumber().cellPhone().replace('.', '-');
     }
-
+    public static String job() {
+        return faker.job().title();
+    }
     public static String password() {
         return faker.bothify("!??##?$#?##?##??#");
 

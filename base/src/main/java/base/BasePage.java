@@ -60,8 +60,11 @@ public class BasePage {
         ExtentTestManager.startTest(methodName);
         ExtentTestManager.getTest().assignCategory(className);
     }
+    public BasePage(){
+        dataInit();
+        databaseInit();
+    }
 
-    @BeforeMethod(alwaysRun = true)
     public void databaseInit() {
         String host = dbConfig.get(BaseConfig.DBProperties.HOST);
         String user = dbConfig.get(BaseConfig.DBProperties.USER);
@@ -71,14 +74,13 @@ public class BasePage {
         db = new Database(host, user, password, className);
     }
 
-    @BeforeMethod(alwaysRun = true)
     public void dataInit() {
         excel = new ExcelData(DATA_PATH);
     }
 
     @Parameters({"driverConfigEnabled", "browser", "url"})
     @BeforeMethod
-    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("http://mbusa.com") String url) {
+    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("http://automationpractice.com") String url) {
         if (Boolean.parseBoolean(driverConfigEnabled)) {
             driverInit(browser);
             driver.get(url);
@@ -166,7 +168,9 @@ public class BasePage {
         webDriverWait.until(ExpectedConditions.visibilityOf(element));
         actions.moveToElement(element).perform();
     }
-
+    public void waitTheVisibilityOfElement(WebElement element){
+        webDriverWait.until(ExpectedConditions.visibilityOf(element));
+    }
     public String getTrimmedElementText(WebElement element) {
         String text = "";
         webDriverWait.until(ExpectedConditions.visibilityOf(element));
@@ -345,6 +349,33 @@ public class BasePage {
         calendar.setTimeInMillis(millis);
         return calendar.getTime();
     }
+
+    //Added method by me
+    public boolean retryingFindClick(By by) {
+        boolean result = false;
+        int attempts = 0;
+        while(attempts < 2) {
+            try {
+                driver.findElement(by).click();
+                result = true;
+                break;
+            } catch(StaleElementReferenceException e) {
+            }
+            attempts++;
+        }
+        return result;
+    }
+
+    public void  moveToElementAndClick(WebElement element){
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
+        Actions actions =new Actions(driver);
+        actions.moveToElement(element).click().perform();
+    }
+    public void waitForVisibilityOfElement(WebElement element){
+        webDriverWait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+
     // endregion
 
 }
