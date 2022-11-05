@@ -9,4 +9,15 @@
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="https://www.apartments.com"/>
 
+    <test name="BootCamp">
+        <classes>
+            <class name="TestFiles.AppartmentSearchTest"/>
+            <class name="TestFiles.AddToPropertyTest"/>
+            <class name="TestFiles.IndexPageTest"/>
+            <class name="TestFiles.CreateAccountTest"/>
+            <class name="TestFiles.TestSignInUsingGoogleAccount"/>
+            <class name="TestFiles.SigninginTest"/>
+        </classes>
+    </test>
+
 </suite>
