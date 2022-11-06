@@ -60,8 +60,11 @@ public class BasePage {
         ExtentTestManager.startTest(methodName);
         ExtentTestManager.getTest().assignCategory(className);
     }
+    public BasePage(){
+        dataInit();
+        databaseInit();
+    }
 
-    @BeforeMethod(alwaysRun = true)
     public void databaseInit() {
         String host = dbConfig.get(BaseConfig.DBProperties.HOST);
         String user = dbConfig.get(BaseConfig.DBProperties.USER);
@@ -71,14 +74,13 @@ public class BasePage {
         db = new Database(host, user, password, className);
     }
 
-    @BeforeMethod(alwaysRun = true)
     public void dataInit() {
         excel = new ExcelData(DATA_PATH);
     }
 
     @Parameters({"driverConfigEnabled", "browser", "url"})
     @BeforeMethod
-    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("http://verizon.com") String url) {
+    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("https://www.apartments.com") String url) {
         if (Boolean.parseBoolean(driverConfigEnabled)) {
             driverInit(browser);
             driver.get(url);
@@ -166,7 +168,9 @@ public class BasePage {
         webDriverWait.until(ExpectedConditions.visibilityOf(element));
         actions.moveToElement(element).perform();
     }
-
+    public void waitTheVisibilityOfElement(WebElement element){
+        webDriverWait.until(ExpectedConditions.visibilityOf(element));
+    }
     public String getTrimmedElementText(WebElement element) {
         String text = "";
         webDriverWait.until(ExpectedConditions.visibilityOf(element));
@@ -344,6 +348,55 @@ public class BasePage {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(millis);
         return calendar.getTime();
+    }
+
+    //Added method by me
+    public boolean retryingFindClick(By by) {
+        boolean result = false;
+        int attempts = 0;
+        while(attempts < 2) {
+            try {
+                driver.findElement(by).click();
+                result = true;
+                break;
+            } catch(StaleElementReferenceException e) {
+            }
+            attempts++;
+        }
+        return result;
+    }
+
+    public void  moveToElementAndClick(WebElement element){
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
+        Actions actions =new Actions(driver);
+        actions.moveToElement(element).click().perform();
+    }
+    public void waitForVisibilityOfElement(WebElement element){
+        webDriverWait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public WebElement waitForThePresenceOfTheElement(By by) {
+        return webDriverWait.until(ExpectedConditions.presenceOfElementLocated(by));
+    }
+
+    public void dragAndDrop(WebElement from, WebElement to){
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("function createEvent(typeOfEvent) {\n" + "var event =document.createEvent(\"CustomEvent\");\n"
+                + "event.initCustomEvent(typeOfEvent,true, true, null);\n" + "event.dataTransfer = {\n" + "data: {},\n"
+                + "setData: function (key, value) {\n" + "this.data[key] = value;\n" + "},\n"
+                + "getData: function (key) {\n" + "return this.data[key];\n" + "}\n" + "};\n" + "return event;\n"
+                + "}\n" + "\n" + "function dispatchEvent(element, event,transferData) {\n"
+                + "if (transferData !== undefined) {\n" + "event.dataTransfer = transferData;\n" + "}\n"
+                + "if (element.dispatchEvent) {\n" + "element.dispatchEvent(event);\n"
+                + "} else if (element.fireEvent) {\n" + "element.fireEvent(\"on\" + event.type, event);\n" + "}\n"
+                + "}\n" + "\n" + "function simulateHTML5DragAndDrop(element, destination) {\n"
+                + "var dragStartEvent =createEvent('dragstart');\n" + "dispatchEvent(element, dragStartEvent);\n"
+                + "var dropEvent = createEvent('drop');\n"
+                + "dispatchEvent(destination, dropEvent,dragStartEvent.dataTransfer);\n"
+                + "var dragEndEvent = createEvent('dragend');\n"
+                + "dispatchEvent(element, dragEndEvent,dropEvent.dataTransfer);\n" + "}\n" + "\n"
+                + "var source = arguments[0];\n" + "var destination = arguments[1];\n"
+                + "simulateHTML5DragAndDrop(source,destination);", from, to);
     }
     // endregion
 
