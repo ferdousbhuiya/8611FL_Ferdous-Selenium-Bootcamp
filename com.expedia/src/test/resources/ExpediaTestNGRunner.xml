@@ -21,6 +21,7 @@
             <class name="TestFiles.CarReservationTest"/>
             <class name="TestFiles.ChattingWithAgentTest"/>
             <class name="TestFiles.LaguageChangeTest"/>
+            <class name="TestFiles.CruiseSearchResultTest"/>
         </classes>
     </test>
 </suite>

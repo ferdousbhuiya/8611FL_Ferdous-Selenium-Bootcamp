@@ -11,7 +11,7 @@ import static org.testng.AssertJUnit.assertTrue;
 
 public class CarSearchTest extends BasePage {
     @Test
-    public void testSearchingCar() throws SQLException {
+    public void testSearchingCar() {
         HomePage homePage =new HomePage();
         homePage.searchingCar();
         waitForVisibilityOfElement(CarSearchResultPage.carSearchResult);

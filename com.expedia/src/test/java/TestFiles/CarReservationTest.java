@@ -12,7 +12,7 @@ import static org.testng.AssertJUnit.assertTrue;
 public class CarReservationTest extends BasePage {
 
     @Test
-    public void testReservingCar() throws SQLException {
+    public void testReservingCar() {
         HomePage homePage =new HomePage();
         homePage.searchingCar().ReserveCar();
         switchToTab();

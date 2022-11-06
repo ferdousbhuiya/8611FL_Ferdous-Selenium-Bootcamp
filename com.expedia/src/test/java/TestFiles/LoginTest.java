@@ -12,7 +12,7 @@ import static org.testng.AssertJUnit.assertTrue;
 public class LoginTest extends BasePage {
 
     @Test
-    public void testingLogin() throws SQLException {
+    public void testingLogin()  {
         HomePage homePage = new HomePage();
         homePage.signIn().fillOutSignInForm();
         waitForVisibilityOfElement(SignInPage.verificationText);

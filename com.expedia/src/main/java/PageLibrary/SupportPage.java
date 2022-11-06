@@ -28,7 +28,6 @@ public class SupportPage extends BasePage {
     @FindBy(xpath = "//button[contains(text(),'Chat now')]")
     public static WebElement iframeChatButton;
 
-
     public SupportPage() {
         PageFactory.initElements(driver, this);
     }

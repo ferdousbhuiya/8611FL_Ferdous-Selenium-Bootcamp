@@ -12,7 +12,7 @@ import static org.testng.AssertJUnit.assertTrue;
 public class FareSelectionTest extends BasePage {
 
     @Test
-    public void testSelectingFare() throws SQLException {
+    public void testSelectingFare()  {
         HomePage homePage =new HomePage();
         homePage.searchFoFlight().selectFlight().selectFare();
         waitForVisibilityOfElement(ChooseFarePage.chooseFareText);

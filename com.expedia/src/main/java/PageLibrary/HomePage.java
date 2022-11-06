@@ -10,17 +10,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class HomePage extends BasePage {
-
-
-
-
-    public HomePage()
-    {
-        PageFactory.initElements(driver, this);
-    }
-
-
-
     @FindBy(xpath = "//div[@class='global-navigation-row-container']/div/div[2]/a[2]")
     public WebElement supportLink;
 
@@ -43,7 +32,7 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//div[@id='wizardMainRegionV2']//div[@class='uitk-tabs-container']/ul/li")
     public List<WebElement> tabContainer;
 
-    //-----------Going to- search for stays ------
+
     @FindBy(xpath = "//form[@id='wizard-hotel-pwa-v2-1']/div[2]/div//button[@data-stid='location-field-destination-menu-trigger']")
     public WebElement goingToInputField;
 
@@ -65,8 +54,7 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//button[contains(text(),'Search')]")
     public WebElement searchButton;
 
-    //----------------------------------------------------
-    //-------------Search fo flight-----------------
+
     @FindBy(xpath = "//div[@id='location-field-leg1-origin-menu']/div[1]/div[1]//button")
     public WebElement leavingFromInput;
 
@@ -87,26 +75,25 @@ public class HomePage extends BasePage {
 
     @FindBy(xpath = "//button[contains(text(),'Search')]")
     public WebElement searchFlightButton;
-    //----------------------------------------------
-    //----------Search for Car--------------------
+
     @FindBy(xpath = "//div[@id='location-field-locn-menu']/div[1]/div[1]//button")
     public WebElement pickUpButton;
 
     @FindBy(id = "location-field-locn")
     public WebElement pickUpSearchInput;
 
-    //----------------------------------------
     @FindBy(xpath = "//a[contains(text(),'Sign in')]")
     public WebElement confirmSignInButton;
-
+    public HomePage()
+    {
+        PageFactory.initElements(driver, this);
+    }
 
     public SignInPage signIn() {
         jsClickOnElement(signInButton);
         jsClickOnElement(confirmSignInButton);
         return new SignInPage();
-    }
-
-    public StaysSearchResultPage searchForStay() {
+    }public StaysSearchResultPage searchForStay() {
 
         clickOnElement(goingToInputField);
         clickOnElement(destination);
@@ -117,19 +104,13 @@ public class HomePage extends BasePage {
         clickOnElement(searchButton);
         return new StaysSearchResultPage();
     }
-
-    public FlightSearchPage searchFoFlight() throws SQLException {
-        //String firstCityName = "SELECT First_City_Name FROM locations.Expedia where id =1;";
-        //String secondCityName = "SELECT Second_City_Name FROM locations.Expedia where id =2;";
-
+    public FlightSearchPage searchFoFlight() {
         clickOnElement(tabContainer.get(1).findElement(By.tagName("a")));
         clickOnElement(leavingFromInput);
         sendKeysToElement(departureInputSearch, excel.readStringArrays("Sheet1")[0][3]);
-        //sendKeysToElement(departureInputSearch, db.executeQueryReadOne(firstCityName).toString());
         clickOnElement(departureAirport);
         clickOnElement(goingToInput);
         sendKeysToElement(destinationInputSearch, excel.readStringArrays("sheet1")[0][4]);
-        //sendKeysToElement(destinationInputSearch, db.executeQueryReadOne(secondCityName).toString());
         clickOnElement(arrivalAirport);
         clickOnElement(checkInButton);
         clickOnElement(checkInPickUpDate);
@@ -139,13 +120,10 @@ public class HomePage extends BasePage {
         return new FlightSearchPage();
     }
 
-    public CarSearchResultPage searchingCar() throws SQLException {
-        //String firstCityName = "SELECT First_City_Name FROM locations.Expedia where id =1;";
+    public CarSearchResultPage searchingCar() {
         clickOnElement(tabContainer.get(2).findElement(By.tagName("a")));
         clickOnElement(pickUpButton);
-
         sendKeysToElement(pickUpSearchInput, excel.readStringArrays("Sheet1")[0][3]);
-        //sendKeysToElement(pickUpSearchInput, db.executeQueryReadOne(firstCityName).toString());
         clickOnElement(destination);
         clickOnElement(checkInButton);
         clickOnElement(checkInPickUpDate);

@@ -32,12 +32,8 @@ public class SignInPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void fillOutSignInForm() throws SQLException {
-        /*String email = "SELECT email FROM locations.Expedia where id =1;";
-        String password = "SELECT Password FROM locations.Expedia where id =1;";
-        clearSendKeysToElement(emailAddressInput, db.executeQueryReadOne(email).toString());
-        clearSendKeysToElement(passwordInput, db.executeQueryReadOne(password).toString());
-        */
+    public void fillOutSignInForm() {
+
         clearSendKeysToElement(emailAddressInput,excel.readStringArrays("Sheet1")[0][1]);
         clearSendKeysToElement(passwordInput, excel.readStringArrays("Sheet1")[0][2]);
         jsClickOnElement(submitButton);
