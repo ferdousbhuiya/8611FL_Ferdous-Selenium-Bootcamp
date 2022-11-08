@@ -8,5 +8,16 @@
 
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="https://www.investing.com/"/>
+    <test name="Test">
+        <classes>
+            <class name="TestFiles.HomePageTest"></class>
+            <class name="TestFiles.AnalysisPageTest"></class>
+            <class name="TestFiles.SearchResultTestPage"></class>
+            <class name="TestFiles.PortfolioPageTest"></class>
+            <class name="TestFiles.FollowUsPageTest"></class>
+        </classes>
+
+    </test>
+
 
 </suite>
