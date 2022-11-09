@@ -80,7 +80,7 @@ public class BasePage {
 
     @Parameters({"driverConfigEnabled", "browser", "url"})
     @BeforeMethod
-    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("https://www.apartments.com") String url) {
+    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("http://verizon.com") String url) {
         if (Boolean.parseBoolean(driverConfigEnabled)) {
             driverInit(browser);
             driver.get(url);
@@ -397,6 +397,11 @@ public class BasePage {
                 + "dispatchEvent(element, dragEndEvent,dropEvent.dataTransfer);\n" + "}\n" + "\n"
                 + "var source = arguments[0];\n" + "var destination = arguments[1];\n"
                 + "simulateHTML5DragAndDrop(source,destination);", from, to);
+    }
+
+
+    public void scrollDown(WebElement element){
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
     // endregion
 
