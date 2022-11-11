@@ -18,6 +18,7 @@ import org.openqa.selenium.support.ui.*;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import org.testng.annotations.Optional;
 import reporting.ExtentManager;
 import reporting.ExtentTestManager;
 import utils.Database;
@@ -26,10 +27,7 @@ import utils.ExcelData;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.time.Duration;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class BasePage {
 
@@ -80,7 +78,7 @@ public class BasePage {
 
     @Parameters({"driverConfigEnabled", "browser", "url"})
     @BeforeMethod
-    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("https://www.investing.com/") String url) {
+    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("http://mbusa.com") String url) {
         if (Boolean.parseBoolean(driverConfigEnabled)) {
             driverInit(browser);
             driver.get(url);
@@ -403,6 +401,18 @@ public class BasePage {
     public void scrollDown(WebElement element){
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
+
+    public void scrollBar(WebElement element){
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();",element );
+    }
+
+    public int randomnumber( int b)
+    {
+        Random random = new Random();
+        int a = random.nextInt(b);
+        return a;
+    }
+
     // endregion
 
 }

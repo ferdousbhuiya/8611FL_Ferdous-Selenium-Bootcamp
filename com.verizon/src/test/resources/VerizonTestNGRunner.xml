@@ -8,5 +8,10 @@
 
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="http://verizon.com"/>
+<test name="Test">
 
+    <classes>
+        <class name="></class>
+    </classes>
+</test>
 </suite>
