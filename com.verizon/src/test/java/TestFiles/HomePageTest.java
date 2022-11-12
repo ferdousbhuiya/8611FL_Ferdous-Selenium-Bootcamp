@@ -17,12 +17,12 @@ public class HomePageTest extends BasePage {
     public void SigninToService()
     {
         HomePage homePage = new HomePage();
+        MyVerizonDashboard myVerizonDashboard = new MyVerizonDashboard();
         RegistrationPage registrationPage = new RegistrationPage();
-        homePage.signintoRegistrationPage();
-        String UserEmail = excel.readStringArrays("Sheet1")[0][1];
-        String Password = excel.readStringArrays("Sheet1")[0][2];
+        String UserEmail = excel.readStringArrays("Sheet1")[1][1];
+        String Password = excel.readStringArrays("Sheet1")[1][2];
         System.out.println("Username and Password : "+ UserEmail+" ,"+Password);
-        registrationPage.SigninToAccount(UserEmail, Password);
+        homePage.signintoRegistrationPage().SigninToAccount(UserEmail, Password);
         assertTrue(isElementVisible(MyVerizonDashboard.signOutButton));
     }
     @Test
@@ -31,11 +31,10 @@ public class HomePageTest extends BasePage {
         HomePage homePage = new HomePage();
         MyVerizonDashboard myVerizonDashboard = new MyVerizonDashboard();
         RegistrationPage registrationPage = new RegistrationPage();
-        homePage.signintoRegistrationPage();
-        String UserEmail = excel.readStringArrays("Sheet1")[0][1];
-        String Password = excel.readStringArrays("Sheet1")[0][2];
+        String UserEmail = excel.readStringArrays("Sheet1")[1][1];
+        String Password = excel.readStringArrays("Sheet1")[1][2];
         System.out.println("Username and Password : "+ UserEmail+" ,"+Password);
-        registrationPage.SigninToAccount(UserEmail, Password);
+        homePage.signintoRegistrationPage().SigninToAccount(UserEmail, Password);
         myVerizonDashboard.signOut();
 
         assertTrue(isElementVisible(registrationPage.signInButton));

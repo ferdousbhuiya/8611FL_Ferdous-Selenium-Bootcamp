@@ -14,10 +14,10 @@ public class RegistrationPage extends BasePage {
     @FindBy(xpath = "//button[@id='continueBtn']")
     public WebElement continueButton;
 
-    @FindBy(xpath = "//body/main[1]/div[1]/div[2]/div[1]/form[1]/div[2]/input[1]")
+    @FindBy(xpath = "(//input[@id='IDToken2'])[1]")
     public WebElement passwordInput;
 
-    @FindBy(xpath = "//body/main[1]/div[1]/div[2]/div[1]/form[1]/div[4]/button[1]")
+    @FindBy(xpath = "(//button[@id='login-submit'])[1]")
     public WebElement signInButton;
 
     @FindBy(xpath = "//h1[contains(text(),'Sign in')]")
@@ -33,7 +33,7 @@ public class RegistrationPage extends BasePage {
         emailInInput.sendKeys(Keys.ENTER);
         sendKeysToElement(passwordInput, pswd);
         waitForVisibilityOfElement(signInButton);
-        jsClickOnElement(signInButton);
+        clickOnElement(signInButton);
         return new MyVerizonDashboard();
     }
 
