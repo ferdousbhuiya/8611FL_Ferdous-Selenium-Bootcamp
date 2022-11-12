@@ -11,15 +11,10 @@ public class FollowUsPage extends BasePage {
 
     @FindBy(xpath = "//a[@title='Twitter']")
     public WebElement Twitter;
-
-
-
     public FollowUsPage()
     {
         PageFactory.initElements(driver, this);
     }
-
-
     public FacebookPage moveToTheEnd()
     {
         scrollDown(Facebook);

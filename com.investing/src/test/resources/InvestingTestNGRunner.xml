@@ -15,6 +15,7 @@
             <class name="TestFiles.SearchResultTestPage"></class>
             <class name="TestFiles.PortfolioPageTest"></class>
             <class name="TestFiles.FollowUsPageTest"></class>
+            <class name="TestFiles.ProfitCalculatorTest"></class>
         </classes>
 
     </test>
