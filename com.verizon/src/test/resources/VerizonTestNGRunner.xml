@@ -8,6 +8,7 @@
 
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="http://verizon.com"/>
+<<<<<<< HEAD
 <test name="Test">
 
     <classes>
@@ -15,3 +16,19 @@
     </classes>
 </test>
 </suite>
+=======
+<test name="test">
+    
+    <classes>
+        <class name="TestFiles.HomePageTest"></class>
+        <class name="TestFiles.AddItemsToCartTest"></class>
+        <class name="TestFiles.SearchingTest"></class>
+        <class name="TestFiles.LanguageChangeTest"></class>
+        <class name="TestFiles.NavigationToAppleMusicPageTest"></class>
+        <class name="TestFiles.FindStoreLocationTest"></class>
+
+
+    </classes>
+</test>
+</suite>
+>>>>>>> com.verizon

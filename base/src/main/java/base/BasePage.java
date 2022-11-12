@@ -78,7 +78,7 @@ public class BasePage {
 
     @Parameters({"driverConfigEnabled", "browser", "url"})
     @BeforeMethod
-    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("http://mbusa.com") String url) {
+    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("http://verizon.com") String url) {
         if (Boolean.parseBoolean(driverConfigEnabled)) {
             driverInit(browser);
             driver.get(url);
@@ -401,6 +401,7 @@ public class BasePage {
     public void scrollDown(WebElement element){
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
+<<<<<<< HEAD
 
     public void scrollBar(WebElement element){
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();",element );
@@ -413,6 +414,8 @@ public class BasePage {
         return a;
     }
 
+=======
+>>>>>>> com.verizon
     // endregion
 
 }
