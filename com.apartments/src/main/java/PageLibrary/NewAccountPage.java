@@ -41,8 +41,6 @@ public class NewAccountPage extends BasePage {
     @FindBy(xpath = "/html[1]/body[1]/div[15]/div[4]/iframe[1]")
     public static WebElement iframe3;
 
-    @FindBy(id = "loginModalHeader")
-    public static WebElement signInIntoYourAccountText;
 
     public NewAccountPage() {
         PageFactory.initElements(driver, this);

@@ -3,6 +3,7 @@ package PageLibrary;
 import base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.devtools.v85.page.Page;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.GenerateData;
@@ -12,15 +13,11 @@ import java.util.List;
 
 public class HomePage extends BasePage {
 
-    @FindBy(id = "headerMenuLink")
-    public WebElement headerLink;
+    @FindBy(xpath = "//ul[@class='userMenuDropdown']/li")
+    public List<WebElement> userMenuDropdown;
 
-    @FindBy(xpath = "//ul[@id='menuNavigation']/li")
-    public List<WebElement> menuNavigationList;
-
-    @FindBy(xpath = "//ul[@id='menuNavigation']/li[4]/ul/li[1]/a")
-    public WebElement subMenuAccount;
-
+    @FindBy(xpath = "//ul[@class='userMenuDropdown']/li")
+    public List<WebElement> SignImSignUpSubMenue;
 
     @FindBy(xpath = "//div[@id='headerLoginSection']/a")
     public List<WebElement> manageSignUpSignInBar;
@@ -50,34 +47,12 @@ public class HomePage extends BasePage {
     @FindBy(id = "signupEmail")
     public WebElement emailAddress;
 
-    @FindBy(id = "recaptcha-anchor")
-    public WebElement checkBox;
-
-    @FindBy(id = "signupBtn")
-    public WebElement signUpButton;
-
-    @FindBy(id = "newPw")
-    public WebElement password;
-
-    @FindBy(id = "NewPasswordConfirm")
-    public WebElement confirmPassword;
-
-    @FindBy(id = "setNewPassword")
-    public WebElement setPasswordButton;
 
     @FindBy(xpath = "//p[contains(text(),'Create an account')]")
     public static WebElement createAccountText;
     @FindBy(xpath = "//a[contains(text(),'Search')]")
     public WebElement searchButton;
 
-    @FindBy(xpath = "//div[@id='signupReCaptcha']/div//iframe")
-    public WebElement iframe;
-
-    @FindBy(xpath = "//div[@id='finalizeRegistrationForm']//iframe")
-    public WebElement iframe2;
-
-    @FindBy(xpath = "/html[1]/body[1]/div[15]/div[4]/iframe[1]")
-    public static WebElement iframe3;
 
     @FindBy(xpath = "//div[@id='loginContainer']//iframe")
     public static WebElement iframeLoginContainer;
@@ -85,8 +60,15 @@ public class HomePage extends BasePage {
     @FindBy(id = "googleLogin")
     public WebElement googleLogIn;
 
+    @FindBy(id = "appleLogin")
+    public WebElement AppleLogIn;
+
     @FindBy(id = "loginModalHeader")
     public static WebElement signInIntoYourAccountText;
+
+    @FindBy(xpath = "//div[@id='username']//button//i")
+    public WebElement StroyIconDown;
+
 
 
     public HomePage() {
@@ -111,8 +93,7 @@ public class HomePage extends BasePage {
         return new HomePage();
     }
 
-    public void navigateToCreateAnAccount() throws SQLException {
-        String passwordInput = "SELECT password FROM locations.password where id=4;";
+    public void navigateToCreateAnAccount()  {
         clickOnElement(manageSignUpSignInBar.get(1));
         sendKeysToElement(firstName, GenerateData.firstName());
         waitForVisibilityOfElement(lastName);
@@ -144,11 +125,20 @@ public class HomePage extends BasePage {
     }
 
     public MyAccountsPage navigateToMyAccount() {
-        clickOnElement(headerLink);
-        clickOnElement(menuNavigationList.get(3).findElement(By.tagName("a")));
-        waitForVisibilityOfElement(subMenuAccount);
-        clickOnElement(subMenuAccount);
-        return new MyAccountsPage();
+        clickOnElement(StroyIconDown);
+        clickOnElement(SignImSignUpSubMenue.get(2));
+       clickOnElement(userMenuDropdown.get(0));
+       return new MyAccountsPage();
     }
+
+
+    public void signInWithAppleAccount() {
+        clickOnElement(manageSignUpSignInBar.get(2));
+        waitForVisibilityOfElement(iframeLoginContainer);
+        switchToFrameByElement(iframeLoginContainer);
+        clickOnElement(AppleLogIn);
+        switchToParentFrame();
+    }
+
 
 }

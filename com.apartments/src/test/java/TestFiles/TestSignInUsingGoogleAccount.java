@@ -22,8 +22,8 @@ public class TestSignInUsingGoogleAccount extends BasePage {
     @Test
     public void signinUsingAppleAccount()
     {
-        IndexPage indexPage=new IndexPage();
-        indexPage.signInWithAppleAccount();
+        HomePage homePage = new HomePage();
+        homePage.signInWithAppleAccount();
         switchToFrameByElement(HomePage.iframeLoginContainer);
         waitForVisibilityOfElement(HomePage.signInIntoYourAccountText);
         assertTrue(HomePage.signInIntoYourAccountText.isDisplayed());

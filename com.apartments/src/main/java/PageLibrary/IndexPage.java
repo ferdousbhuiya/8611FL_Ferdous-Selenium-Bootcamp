@@ -1,7 +1,6 @@
 package PageLibrary;
 
 import base.BasePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -33,7 +32,7 @@ public class IndexPage extends BasePage {
     @FindBy(id = "password")
     public WebElement passwordForSignin;
 
-    @FindBy(id = "loginButton")
+    @FindBy(xpath = "//a[normalize-space()='Sign In']")
     public WebElement signInButton;
 
     @FindBy(id = "headerAddProperty")
@@ -45,28 +44,12 @@ public class IndexPage extends BasePage {
     @FindBy(xpath = "//a[contains(text(),'Sign In')]")
     public WebElement SigninForExistingAccount;
 
-    @FindBy(id = "newPw")
-    public WebElement password;
-
-    @FindBy(id = "NewPasswordConfirm")
-    public WebElement confirmPassword;
-
-    @FindBy(id = "setNewPassword")
-    public WebElement setPasswordButton;
-
-    @FindBy(xpath = "//p[contains(text(),'Create an account')]")
-    public static WebElement createAccountText;
     @FindBy(xpath = "//a[contains(text(),'Search')]")
     public WebElement searchButton;
 
-    @FindBy(xpath = "//div[@id='signupReCaptcha']/div//iframe")
-    public WebElement iframe;
 
-    @FindBy(xpath = "//div[@id='finalizeRegistrationForm']//iframe")
-    public WebElement iframe2;
-
-    @FindBy(xpath = "/html[1]/body[1]/div[15]/div[4]/iframe[1]")
-    public static WebElement iframe3;
+    @FindBy(xpath = "//div[@class='modalBody']//iframe")
+    public static WebElement iframe3ForAppleLogin;
 
     @FindBy(xpath = "//div[@id='loginContainer']//iframe")
     public static WebElement iframeLoginContainer;
@@ -74,10 +57,8 @@ public class IndexPage extends BasePage {
     @FindBy(id = "googleLogin")
     public WebElement googleLogIn;
 
-    @FindBy(xpath = "//span[contains(text(), 'Continue with Apple')]")
+    @FindBy(id = "applelggin")
     public WebElement Applelogin;
-    @FindBy(xpath = "//div[@id='headerLoginSection']/a")
-    public List<WebElement> manageSignUpSignInBar;
 
     @FindBy(xpath = "//a[contains(text(),'View More')]")
     public WebElement moreAppartment;
@@ -92,43 +73,6 @@ public class IndexPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-
-    public IndexPage signInUsingExistentAccount() throws SQLException {
-        String passwordInput = "SELECT password FROM locations.password where id=4;";
-        String emailInput = "SELECT email FROM locations.emails where emailID=3;";
-        clickOnElement(SigninForExistingAccount);
-        waitForVisibilityOfElement(iframeLoginContainer);
-        switchToFrameByElement(iframeLoginContainer);
-        waitForVisibilityOfElement(userNameSignIn);
-        sendKeysToElement(userNameSignIn, db.executeQueryReadAll("emailInput").toString());
-        sendKeysToElement(passwordForSignin, db.executeQueryReadAll("passwordInput").toString());
-        waitForVisibilityOfElement(signInButton);
-        clickOnElement(signInButton);
-        //System.out.println("username is : "+excel.readStringArrays("Aptmnt")[3][4]+"  Your password is "+excel.readStringArrays("Aptmnt")[3][1]);
-
-        return new IndexPage();
-    }
-
-    public AppartmentResultsPage searchApartments() {
-        clickOnElement(searchInput);
-        clearSendKeysToElement(searchInput, GenerateData.city());
-        jsClickOnElement(searchButton);
-        return new AppartmentResultsPage();
-    }
- 
-    public AddPropertysPage navigateToPropertyPage() {
-        waitForVisibilityOfElement(addAProperty);
-        clickOnElement(addAProperty);
-        return new AddPropertysPage();
-    }
-
-    public MyAccountsPage navigateToMyAccount() {
-        clickOnElement(headerLink);
-        clickOnElement(menuNavigationList.get(3).findElement(By.tagName("a")));
-        waitForVisibilityOfElement(subMenuAccount);
-        clickOnElement(subMenuAccount);
-        return new MyAccountsPage();
-    }
 
 
     public NewAccountPage CreateNewAccount()
@@ -146,13 +90,6 @@ public class IndexPage extends BasePage {
         return new HelpCenterPage();
     }
 
-    public void signInWithAppleAccount() {
-        clickOnElement(manageSignUpSignInBar.get(4));
-        waitForVisibilityOfElement(iframeLoginContainer);
-        switchToFrameByElement(iframeLoginContainer);
-        clickOnElement(Applelogin);
-        switchToParentFrame();
-    }
 
     public MoreAppartmentPage searchMoreAppartment()
     {

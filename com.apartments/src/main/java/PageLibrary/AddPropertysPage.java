@@ -10,9 +10,6 @@ public class AddPropertysPage extends BasePage {
     @FindBy(id = "iframeAddProperty")
     public WebElement iframeAddProperty;
 
-    @FindBy(xpath = "//div[@class='recaptcha']/div//iframe")
-    public WebElement iframeCheckBox;
-
     @FindBy(id = "unitQuantityTypeSingle")
     public WebElement singleUnitButton;
 
@@ -28,9 +25,6 @@ public class AddPropertysPage extends BasePage {
     @FindBy(id = "cpid2-0baths")
     public WebElement selectBath;
 
-    @FindBy(id = "recaptcha-anchor")
-    public WebElement checkBox;
-
     @FindBy(id = "mat-option-21")
     public WebElement singleFamilyHouse;
 
@@ -40,12 +34,6 @@ public class AddPropertysPage extends BasePage {
     @FindBy(id = "mat-option-8")
     public WebElement oneBath;
 
-    @FindBy(id = "mat-option-40")
-    public WebElement address;
-
-
-    @FindBy(xpath = "//button[contains(text(),' Add My Property ')]")
-    public WebElement addPropertyButton;
 
     @FindBy(xpath = "//p[contains(text(),'Add Your Property')]")
     public static WebElement addPropertyText;
