@@ -79,10 +79,14 @@ public class BasePage {
     @Parameters({"driverConfigEnabled", "browser", "url"})
     @BeforeMethod
 <<<<<<< HEAD
+<<<<<<< HEAD
     public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("http://verizon.com") String url) {
 =======
     public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("https://www.investing.com/") String url) {
 >>>>>>> com.investing
+=======
+    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("https://www.apartments.com") String url) {
+>>>>>>> com.apartments
         if (Boolean.parseBoolean(driverConfigEnabled)) {
             driverInit(browser);
             driver.get(url);
@@ -400,6 +404,7 @@ public class BasePage {
                 + "var source = arguments[0];\n" + "var destination = arguments[1];\n"
                 + "simulateHTML5DragAndDrop(source,destination);", from, to);
     }
+<<<<<<< HEAD
 
 
     public void scrollDown(WebElement element){
@@ -423,6 +428,8 @@ public class BasePage {
 >>>>>>> com.verizon
 =======
 >>>>>>> com.investing
+=======
+>>>>>>> com.apartments
     // endregion
 
 }
