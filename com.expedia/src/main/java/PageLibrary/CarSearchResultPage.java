@@ -19,12 +19,16 @@ public class CarSearchResultPage extends BasePage {
     @FindBy(id = "app-captcha-pwa")
     public static WebElement securityPageVerification;
 
+    @FindBy(xpath = "//div[contains(text(),'Stays')]")
+    public WebElement blankspace;
+
     public CarSearchResultPage() {
         PageFactory.initElements(driver, this);
     }
 
     public void ReserveCar() {
+        clickOnElement(blankspace);
         waitForVisibilityOfElement(carSearchResult);
-        clickOnElement(listOfAllCar.get(1).findElement(By.tagName("a")));
+        clickOnElement(listOfAllCar.get(3).findElement(By.tagName("a")));
     }
 }

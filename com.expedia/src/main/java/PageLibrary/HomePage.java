@@ -2,6 +2,7 @@ package PageLibrary;
 
 import base.BasePage;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -84,6 +85,16 @@ public class HomePage extends BasePage {
 
     @FindBy(xpath = "//a[contains(text(),'Sign in')]")
     public WebElement confirmSignInButton;
+
+    @FindBy(xpath = "//button[@aria-label='Things to do in']")
+    public WebElement ButtonfortheLocationOfThingsTodo;
+
+    @FindBy(xpath = "//input[@id='location-field-location']")
+    public WebElement locationFieldForToDoThings;
+    @FindBy(xpath = "//button[normalize-space()='Search']")
+    public WebElement SearchTheLocationForToDo;
+
+
     public HomePage()
     {
         PageFactory.initElements(driver, this);
@@ -144,5 +155,19 @@ public class HomePage extends BasePage {
         selectFromDropdownByIndex(selectCountry,38);
         selectFromDropdownByIndex(selectLanguage,0);
         clickOnElement(saveButton);
+    }
+
+
+    public ThingsToDoResultPage ThingsTodo()
+    {
+        clickOnElement(tabContainer.get(4));
+        clickOnElement(ButtonfortheLocationOfThingsTodo);
+        sendKeysToElement(locationFieldForToDoThings, "Miami");
+        locationFieldForToDoThings.sendKeys(Keys.ENTER);
+        clickOnElement(checkInButton);
+        clickOnElement(checkInPickUpDate);
+        clickOnElement(doneButton);
+        clickOnElement(SearchTheLocationForToDo);
+        return new ThingsToDoResultPage();
     }
 }

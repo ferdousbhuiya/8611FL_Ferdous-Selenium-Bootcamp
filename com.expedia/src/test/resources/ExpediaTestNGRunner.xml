@@ -9,7 +9,7 @@
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="http://expedia.com"/>
 
-    <test name="Smoke">
+    <test name="Test">
         <classes>
             <class name="TestFiles.FareSelectionTest"/>
             <class name="TestFiles.LoginTest"/>
@@ -22,6 +22,7 @@
             <class name="TestFiles.ChattingWithAgentTest"/>
             <class name="TestFiles.LaguageChangeTest"/>
             <class name="TestFiles.CruiseSearchResultTest"/>
+            <class name="TestFiles.ThingsToDoTest"></class>
         </classes>
     </test>
 </suite>

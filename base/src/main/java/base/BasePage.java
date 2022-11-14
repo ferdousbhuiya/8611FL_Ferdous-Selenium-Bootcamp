@@ -83,7 +83,7 @@ public class BasePage {
 
     @Parameters({"driverConfigEnabled", "browser", "url"})
     @BeforeMethod
-    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("https://www.expedia.com/") String url) {
+    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("http://expedia.com") String url) {
         if (Boolean.parseBoolean(driverConfigEnabled)) {
             driverInit(browser);
             driver.manage().window().maximize();
@@ -92,14 +92,14 @@ public class BasePage {
         }
     }
 
-//    @Parameters({"driverConfigEnabled"})
-//    @AfterMethod
-//    public void cleanUp(@Optional("true") String driverConfigEnabled) {
-//        if (Boolean.parseBoolean(driverConfigEnabled)) {
-//            driver.close();
-//            driver.quit();
-//        }
-//    }
+    @Parameters({"driverConfigEnabled"})
+   @AfterMethod
+   public void cleanUp(@Optional("true") String driverConfigEnabled) {
+      if (Boolean.parseBoolean(driverConfigEnabled)) {
+           driver.close();
+           driver.quit();
+        }
+    }
 
     @Parameters({"driverConfigEnabled"})
     @AfterMethod(alwaysRun = true)
