@@ -83,14 +83,13 @@ public class BasePage {
             driverInit(browser);
             driver.get(url);
             driver.manage().deleteAllCookies();
-            driver.manage().window().maximize();
         }
     }
 
    @Parameters({"driverConfigEnabled"})
    @AfterMethod
-  public void cleanUp(@Optional("true") String driverConfigEnabled) {
-       if (Boolean.parseBoolean(driverConfigEnabled)) {
+   public void cleanUp(@Optional("true") String driverConfigEnabled) {
+      if (Boolean.parseBoolean(driverConfigEnabled)) {
            driver.close();
            driver.quit();
        }
@@ -411,7 +410,7 @@ public class BasePage {
         return a;
     }
 
-    
+
 
     // endregion
 

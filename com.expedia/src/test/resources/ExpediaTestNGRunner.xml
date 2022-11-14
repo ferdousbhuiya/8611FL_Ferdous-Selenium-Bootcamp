@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="Expedia" verbose="1" >
+<suite name="Expedia" verbose="1">
 
     <listeners>
         <listener class-name="listeners.AnnotationTransformer"/>
@@ -9,4 +9,20 @@
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="http://expedia.com"/>
 
+    <test name="Test">
+        <classes>
+            <class name="TestFiles.FareSelectionTest"/>
+            <class name="TestFiles.LoginTest"/>
+            <class name="TestFiles.StayTest"/>
+            <class name="TestFiles.FlightSearchTest"/>
+            <class name="TestFiles.CarSearchTest"/>
+            <class name="TestFiles.HotelSelectionTest"/>
+            <class name="TestFiles.FlightSelectionTest"/>
+            <class name="TestFiles.CarReservationTest"/>
+            <class name="TestFiles.ChattingWithAgentTest"/>
+            <class name="TestFiles.LaguageChangeTest"/>
+            <class name="TestFiles.CruiseSearchResultTest"/>
+            <class name="TestFiles.ThingsToDoTest"></class>
+        </classes>
+    </test>
 </suite>
