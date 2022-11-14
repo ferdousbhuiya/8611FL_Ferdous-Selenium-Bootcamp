@@ -1,6 +1,5 @@
 package TestFiles;
 
-import PageLibrary.IndexPage;
 import PageLibrary.VehiclePage;
 import base.BasePage;
 import org.testng.annotations.Test;

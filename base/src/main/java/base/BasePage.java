@@ -17,8 +17,8 @@ import org.openqa.selenium.support.events.WebDriverListener;
 import org.openqa.selenium.support.ui.*;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
-import org.testng.annotations.*;
 import org.testng.annotations.Optional;
+import org.testng.annotations.*;
 import reporting.ExtentManager;
 import reporting.ExtentTestManager;
 import utils.Database;
@@ -78,15 +78,7 @@ public class BasePage {
 
     @Parameters({"driverConfigEnabled", "browser", "url"})
     @BeforeMethod
-<<<<<<< HEAD
-<<<<<<< HEAD
-    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("http://verizon.com") String url) {
-=======
-    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("https://www.investing.com/") String url) {
->>>>>>> com.investing
-=======
-    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("https://www.apartments.com") String url) {
->>>>>>> com.apartments
+    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("http://bankofamerica.com") String url) {
         if (Boolean.parseBoolean(driverConfigEnabled)) {
             driverInit(browser);
             driver.get(url);
@@ -95,14 +87,14 @@ public class BasePage {
         }
     }
 
-    @Parameters({"driverConfigEnabled"})
-    @AfterMethod
-    public void cleanUp(@Optional("true") String driverConfigEnabled) {
-        if (Boolean.parseBoolean(driverConfigEnabled)) {
-            driver.close();
-            driver.quit();
-        }
-    }
+   @Parameters({"driverConfigEnabled"})
+   @AfterMethod
+  public void cleanUp(@Optional("true") String driverConfigEnabled) {
+       if (Boolean.parseBoolean(driverConfigEnabled)) {
+           driver.close();
+           driver.quit();
+       }
+  }
 
     @Parameters({"driverConfigEnabled"})
     @AfterMethod(alwaysRun = true)
@@ -174,9 +166,7 @@ public class BasePage {
         webDriverWait.until(ExpectedConditions.visibilityOf(element));
         actions.moveToElement(element).perform();
     }
-    public void waitTheVisibilityOfElement(WebElement element){
-        webDriverWait.until(ExpectedConditions.visibilityOf(element));
-    }
+
     public String getTrimmedElementText(WebElement element) {
         String text = "";
         webDriverWait.until(ExpectedConditions.visibilityOf(element));
@@ -307,12 +297,11 @@ public class BasePage {
             driver = new SafariDriver();
         }
 
-        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(30));
         fluentWait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(20))
                 .pollingEvery(Duration.ofMillis(500))
                 .ignoring(Exception.class);
-
         WebDriverListener listener = new DriverEventListener();
         driver = new EventFiringDecorator(listener).decorate(driver);
 
@@ -377,14 +366,17 @@ public class BasePage {
         Actions actions =new Actions(driver);
         actions.moveToElement(element).click().perform();
     }
+    public void  jsMoveToElementAndClick(WebElement element){
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+        jsDriver = (JavascriptExecutor) (driver);
+        jsDriver.executeScript("arguments[0].click();", element);
+    }
     public void waitForVisibilityOfElement(WebElement element){
         webDriverWait.until(ExpectedConditions.visibilityOf(element));
     }
-
-    public WebElement waitForThePresenceOfTheElement(By by) {
-        return webDriverWait.until(ExpectedConditions.presenceOfElementLocated(by));
+    public void scrollDown(WebElement element){
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
-
     public void dragAndDrop(WebElement from, WebElement to){
         JavascriptExecutor js = (JavascriptExecutor)driver;
         js.executeScript("function createEvent(typeOfEvent) {\n" + "var event =document.createEvent(\"CustomEvent\");\n"
@@ -404,15 +396,10 @@ public class BasePage {
                 + "var source = arguments[0];\n" + "var destination = arguments[1];\n"
                 + "simulateHTML5DragAndDrop(source,destination);", from, to);
     }
-<<<<<<< HEAD
 
-
-    public void scrollDown(WebElement element){
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    public WebElement waitForThePresenceOfTheElement(By by) {
+        return webDriverWait.until(ExpectedConditions.presenceOfElementLocated(by));
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-
     public void scrollBar(WebElement element){
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();",element );
     }
@@ -424,12 +411,8 @@ public class BasePage {
         return a;
     }
 
-=======
->>>>>>> com.verizon
-=======
->>>>>>> com.investing
-=======
->>>>>>> com.apartments
+    
+
     // endregion
 
 }

@@ -9,4 +9,25 @@
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="http://bankofamerica.com"/>
 
+
+    <test name="Test">
+
+
+        <classes>
+            <class name="TestFiles.SearchForCarLoanTest"></class>
+            <class name="TestFiles.ApplyingForCreditCardTest"></class>
+            <class name="TestFiles.ApplyingToCdsAccountTest"></class>
+            <class name="TestFiles.AutoLoanCalculatorTest"></class>
+            <class name="TestFiles.HelpFromAdvisorTest"></class>
+            <class name="TestFiles.SmallBusinessFinancingTest"></class>
+            <class name="TestFiles.GetMobileAppTest"></class>
+            <class name="TestFiles.SearchHomeTest"></class>
+            <class name="TestFiles.FinancialCenterSearchingTest"></class>
+            <class name="TestFiles.BetterMoneyHabitTest"></class>
+            <class name="TestFiles.LanguageChangeTest"></class>
+
+        </classes>
+    </test>
+
+
 </suite>

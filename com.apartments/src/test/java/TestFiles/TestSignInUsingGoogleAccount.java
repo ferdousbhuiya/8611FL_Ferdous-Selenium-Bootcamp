@@ -1,11 +1,8 @@
 package TestFiles;
 
 import PageLibrary.HomePage;
-import PageLibrary.IndexPage;
 import base.BasePage;
 import org.testng.annotations.Test;
-
-import java.sql.SQLException;
 
 import static org.testng.AssertJUnit.assertTrue;
 

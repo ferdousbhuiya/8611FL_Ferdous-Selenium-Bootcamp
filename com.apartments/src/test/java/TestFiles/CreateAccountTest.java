@@ -1,7 +1,6 @@
 package TestFiles;
 
 import PageLibrary.HomePage;
-import PageLibrary.MyAccountsPage;
 import base.BasePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;

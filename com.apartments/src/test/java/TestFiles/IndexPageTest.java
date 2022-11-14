@@ -2,7 +2,6 @@ package TestFiles;
 
 import PageLibrary.*;
 import base.BasePage;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;

@@ -42,7 +42,7 @@ public class HomePageTest extends BasePage {
     {
         HomePage homePage= new HomePage();
         homePage.moveToTechnicalAnalysis();
-        String actual = homePage.getTrimmedElementText(homePage.CandleStickPatternListHeader);
+        String actual = getTrimmedElementText(homePage.CandleStickPatternListHeader);
         Assert.assertEquals(actual, "Candlestick Patterns");
     }
 
@@ -51,7 +51,7 @@ public class HomePageTest extends BasePage {
     {
         HomePage homePage= new HomePage();
         homePage.marketindicesList();
-        String actual = homePage.getTrimmedElementText(homePage.marketIndicesListHeading);
+        String actual = getTrimmedElementText(homePage.marketIndicesListHeading);
         Assert.assertEquals(actual, "United States - Financial Markets");
     }
 
