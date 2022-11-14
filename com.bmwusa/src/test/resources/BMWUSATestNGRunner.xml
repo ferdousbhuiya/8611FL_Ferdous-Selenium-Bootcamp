@@ -8,5 +8,20 @@
 
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="http://bmwusa.com"/>
+    <test name="Test">
+        <classes>
+            <class name="TestFiles.TestChoosingModels"></class>
+            <class name="TestFiles.TestContactDealer"></class>
+            <class name="TestFiles.TestCustomizeCar"></class>
+            <class name="TestFiles.TestEstimatePayment"></class>
+            <class name="TestFiles.TestGetQuote"></class>
+            <class name="TestFiles.TestNavigateToDealerContactPage"></class>
+            <class name="TestFiles.TestRegistration"></class>
+            <class name="TestFiles.TestShopNewVehicle"></class>
+            <class name="TestFiles.TestShopBmwAccessories"></class>
+            <class name="TestFiles.TestNavigateToTheBuildingPage"></class>
+
+        </classes>
+    </test>
 
 </suite>
