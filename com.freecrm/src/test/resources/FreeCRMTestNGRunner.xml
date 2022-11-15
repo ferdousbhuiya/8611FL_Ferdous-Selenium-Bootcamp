@@ -8,5 +8,20 @@
 
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="https://freecrm.com"/>
+    <test name="Test">
+        <classes>
+            <class name="TestFiles.LoginTest"></class>
+            <class name="TestFiles.AddContactTest"></class>
+            <class name="TestFiles.AddDocumentTest"></class>
+            <class name="TestFiles.AddEventToCalendarTest"></class>
+            <class name="TestFiles.DeleteContactTest"></class>
+            <class name="TestFiles.DeleteDocumentTest"></class>
+            <class name="TestFiles.DeleteEventCalendarTest"></class>
+            <class name="TestFiles.AddingNewTaskTest"></class>
+            <class name="TestFiles.EditContactTest"></class>
+            <class name="TestFiles.EditEventCalendar"></class>
+            <class name="TestFiles.AddNewDealTest"></class>
+        </classes>
+    </test>
 
 </suite>
