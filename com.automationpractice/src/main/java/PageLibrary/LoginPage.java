@@ -38,42 +38,6 @@ public class LoginPage extends BasePage {
 		homePage = new HomePage();
 		return homePage;
 
-		/*action.scrollByVisibilityOfElement(driver, userName);
-		action.type(userName, uname);
-		action.type(password, pswd);
-		action.JSClick(driver, signInBtn);
-		Thread.sleep(2000);
-		homePage=new HomePage();
-		return homePage;*/
-
-
-	}
-	
-	public AddressPage login(String uname, String pswd,AddressPage addressPage) throws Throwable {
-		basePage.sendKeysToElement(userName, uname);
-		basePage.sendKeysToElement(password, pswd);
-		basePage.jsClickOnElement(signInBtn);
-		addressPage = new AddressPage();
-		return addressPage;
-
-
-		/*action.scrollByVisibilityOfElement(driver, userName);
-		action.type(userName, uname);
-		action.type(password, pswd);
-		action.click(driver, signInBtn);
-		Thread.sleep(2000);
-		addressPage=new AddressPage();
-		return addressPage;*/
-	}
-	
-	public AccountCreationPage createNewAccount() throws Throwable {
-
-		sendKeysToElement(emailForNewAccount, GenerateData.email());
-		createNewAccountBtn.click();
-
-		//action.type(emailForNewAccount, newEmail);
-		//action.click(driver, createNewAccountBtn);
-		return new AccountCreationPage();
 	}
 	
 }
