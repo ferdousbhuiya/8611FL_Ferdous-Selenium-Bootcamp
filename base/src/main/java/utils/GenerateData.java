@@ -81,4 +81,8 @@ public class GenerateData {
         return new String[]{day, month, year};
     }
 
+    public static String Company() {
+        return faker.company().name();
+    }
+
 }

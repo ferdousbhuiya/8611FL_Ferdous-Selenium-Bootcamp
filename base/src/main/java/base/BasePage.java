@@ -19,6 +19,7 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.Optional;
 import org.testng.annotations.*;
+import org.testng.annotations.Optional;
 import reporting.ExtentManager;
 import reporting.ExtentTestManager;
 import utils.Database;
@@ -88,8 +89,8 @@ public class BasePage {
 
    @Parameters({"driverConfigEnabled"})
    @AfterMethod
-   public void cleanUp(@Optional("true") String driverConfigEnabled) {
-      if (Boolean.parseBoolean(driverConfigEnabled)) {
+    public void cleanUp(@Optional("true") String driverConfigEnabled) {
+       if (Boolean.parseBoolean(driverConfigEnabled)) {
            driver.close();
            driver.quit();
        }
