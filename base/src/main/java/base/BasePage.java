@@ -79,22 +79,23 @@ public class BasePage {
 
     @Parameters({"driverConfigEnabled", "browser", "url"})
     @BeforeMethod
-    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("http://bankofamerica.com") String url) {
+    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("http://espn.com") String url) {
         if (Boolean.parseBoolean(driverConfigEnabled)) {
             driverInit(browser);
             driver.get(url);
             driver.manage().deleteAllCookies();
+            driver.manage().window().maximize();
         }
     }
 
-   @Parameters({"driverConfigEnabled"})
-   @AfterMethod
+    @Parameters({"driverConfigEnabled"})
+    @AfterMethod
     public void cleanUp(@Optional("true") String driverConfigEnabled) {
-       if (Boolean.parseBoolean(driverConfigEnabled)) {
-           driver.close();
-           driver.quit();
-       }
-  }
+        if (Boolean.parseBoolean(driverConfigEnabled)) {
+            driver.close();
+            driver.quit();
+        }
+    }
 
     @Parameters({"driverConfigEnabled"})
     @AfterMethod(alwaysRun = true)
@@ -410,6 +411,17 @@ public class BasePage {
         int a = random.nextInt(b);
         return a;
     }
+
+    public void clickAnElementMatchingText(List<WebElement> elements, String menuItem){
+        WebElement element = elements.stream().parallel()
+                .filter(e -> e.getText().equalsIgnoreCase(menuItem))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Element with Text "+menuItem+" not present"));
+        element.click();
+    }
+
+
+    // endregion
 
 
 
