@@ -18,6 +18,7 @@ import org.openqa.selenium.support.ui.*;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
+import org.testng.annotations.Optional;
 import reporting.ExtentManager;
 import reporting.ExtentTestManager;
 import utils.Database;
@@ -26,10 +27,7 @@ import utils.ExcelData;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.time.Duration;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class BasePage {
 
@@ -60,8 +58,11 @@ public class BasePage {
         ExtentTestManager.startTest(methodName);
         ExtentTestManager.getTest().assignCategory(className);
     }
+    public BasePage(){
+        dataInit();
+        databaseInit();
+    }
 
-    @BeforeMethod(alwaysRun = true)
     public void databaseInit() {
         String host = dbConfig.get(BaseConfig.DBProperties.HOST);
         String user = dbConfig.get(BaseConfig.DBProperties.USER);
@@ -71,7 +72,6 @@ public class BasePage {
         db = new Database(host, user, password, className);
     }
 
-    @BeforeMethod(alwaysRun = true)
     public void dataInit() {
         excel = new ExcelData(DATA_PATH);
     }
@@ -87,14 +87,14 @@ public class BasePage {
         }
     }
 
-    @Parameters({"driverConfigEnabled"})
-    @AfterMethod
-    public void cleanUp(@Optional("true") String driverConfigEnabled) {
-        if (Boolean.parseBoolean(driverConfigEnabled)) {
-            driver.close();
-            driver.quit();
-        }
-    }
+   @Parameters({"driverConfigEnabled"})
+   @AfterMethod
+   public void cleanUp(@Optional("true") String driverConfigEnabled) {
+       if (Boolean.parseBoolean(driverConfigEnabled)) {
+           driver.close();
+           driver.quit();
+       }
+   }
 
     @Parameters({"driverConfigEnabled"})
     @AfterMethod(alwaysRun = true)
@@ -297,12 +297,11 @@ public class BasePage {
             driver = new SafariDriver();
         }
 
-        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(30));
         fluentWait = new FluentWait<>(driver)
                 .withTimeout(Duration.ofSeconds(20))
                 .pollingEvery(Duration.ofMillis(500))
                 .ignoring(Exception.class);
-
         WebDriverListener listener = new DriverEventListener();
         driver = new EventFiringDecorator(listener).decorate(driver);
 
@@ -345,6 +344,82 @@ public class BasePage {
         calendar.setTimeInMillis(millis);
         return calendar.getTime();
     }
+
+    //Added method by me
+    public boolean retryingFindClick(By by) {
+        boolean result = false;
+        int attempts = 0;
+        while(attempts < 2) {
+            try {
+                driver.findElement(by).click();
+                result = true;
+                break;
+            } catch(StaleElementReferenceException e) {
+            }
+            attempts++;
+        }
+        return result;
+    }
+
+    public void  moveToElementAndClick(WebElement element){
+        webDriverWait.until(ExpectedConditions.elementToBeClickable(element));
+        Actions actions =new Actions(driver);
+        actions.moveToElement(element).click().perform();
+    }
+    public void  jsMoveToElementAndClick(WebElement element){
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+        jsDriver = (JavascriptExecutor) (driver);
+        jsDriver.executeScript("arguments[0].click();", element);
+    }
+    public void waitForVisibilityOfElement(WebElement element){
+        webDriverWait.until(ExpectedConditions.visibilityOf(element));
+    }
+    public void scrollDown(WebElement element){
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+    public void dragAndDrop(WebElement from, WebElement to){
+        JavascriptExecutor js = (JavascriptExecutor)driver;
+        js.executeScript("function createEvent(typeOfEvent) {\n" + "var event =document.createEvent(\"CustomEvent\");\n"
+                + "event.initCustomEvent(typeOfEvent,true, true, null);\n" + "event.dataTransfer = {\n" + "data: {},\n"
+                + "setData: function (key, value) {\n" + "this.data[key] = value;\n" + "},\n"
+                + "getData: function (key) {\n" + "return this.data[key];\n" + "}\n" + "};\n" + "return event;\n"
+                + "}\n" + "\n" + "function dispatchEvent(element, event,transferData) {\n"
+                + "if (transferData !== undefined) {\n" + "event.dataTransfer = transferData;\n" + "}\n"
+                + "if (element.dispatchEvent) {\n" + "element.dispatchEvent(event);\n"
+                + "} else if (element.fireEvent) {\n" + "element.fireEvent(\"on\" + event.type, event);\n" + "}\n"
+                + "}\n" + "\n" + "function simulateHTML5DragAndDrop(element, destination) {\n"
+                + "var dragStartEvent =createEvent('dragstart');\n" + "dispatchEvent(element, dragStartEvent);\n"
+                + "var dropEvent = createEvent('drop');\n"
+                + "dispatchEvent(destination, dropEvent,dragStartEvent.dataTransfer);\n"
+                + "var dragEndEvent = createEvent('dragend');\n"
+                + "dispatchEvent(element, dragEndEvent,dropEvent.dataTransfer);\n" + "}\n" + "\n"
+                + "var source = arguments[0];\n" + "var destination = arguments[1];\n"
+                + "simulateHTML5DragAndDrop(source,destination);", from, to);
+    }
+
+    public WebElement waitForThePresenceOfTheElement(By by) {
+        return webDriverWait.until(ExpectedConditions.presenceOfElementLocated(by));
+    }
+    public void scrollBar(WebElement element){
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();",element );
+    }
+
+    public int randomnumber( int b)
+    {
+        Random random = new Random();
+        int a = random.nextInt(b);
+        return a;
+    }
+
+    public void clickAnElementMatchingText(List<WebElement> elements, String menuItem){
+        WebElement element = elements.stream().parallel()
+                .filter(e -> e.getText().equalsIgnoreCase(menuItem))
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("Element with Text "+menuItem+" not present"));
+        element.click();
+    }
+
+
     // endregion
 
 }

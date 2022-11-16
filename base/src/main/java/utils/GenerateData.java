@@ -23,6 +23,7 @@ public class GenerateData {
         return faker.name().lastName();
     }
 
+
     public static String email() {
         String[] domains = {"gmail.com", "yahoo.com", "me.com", "live.com", "hotmail.com"};
         Random random = new Random();

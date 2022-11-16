@@ -8,5 +8,21 @@
 
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="http://espn.com"/>
+    
+    <test name="Test">
+        <classes>
+            <class name="TestFiles.HomePageTest"></class>
+            <class name="TestFiles.AddingPhoneNumberTest"></class>
+            <class name="TestFiles.AddToFavoriteTest"></class>
+            <class name="TestFiles.DownloadEspnAppTest"></class>
+            <class name="TestFiles.NavigateToWorldCupTest"></class>
+            <class name="TestFiles.NflScheduleTest"></class>
+            <class name="TestFiles.PlayVideoTest"></class>
+            <class name="TestFiles.NBAScoreTest"></class>
+            <class name="TestFiles.SelectAfricaEditionsTest"></class>
+            <class name="TestFiles.SignInTest"></class>
+            <class name="TestFiles.SignOutTest"></class>
+        </classes>
+    </test>
 
 </suite>
