@@ -8,5 +8,17 @@
 
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="http://ebay.com"/>
-
+<test name="Test">
+    <classes>
+        <class name="TestFiles.AddToCartTest"></class>
+        <class name="TestFiles.AddAnyItemToCartTest"></class>
+        <class name="TestFiles.AddShoesToCartTest"></class>
+        <class name="TestFiles.AddJewelleryToCartTest"></class>
+        <class name="TestFiles.AddVehicleTest"></class>
+        <class name="TestFiles.SearchItemTest"></class>
+        <class name="TestFiles.HomePageTest"></class>
+        <class name="TestFiles.RefurbishedItemAddingTest"></class>
+       
+    </classes>
+</test>
 </suite>
