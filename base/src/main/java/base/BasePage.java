@@ -79,7 +79,11 @@ public class BasePage {
 
     @Parameters({"driverConfigEnabled", "browser", "url"})
     @BeforeMethod
+<<<<<<< HEAD
     public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("https://freecrm.com") String url) {
+=======
+    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("http://espn.com") String url) {
+>>>>>>> com.espn
         if (Boolean.parseBoolean(driverConfigEnabled)) {
             driverInit(browser);
             driver.get(url);
@@ -88,14 +92,14 @@ public class BasePage {
         }
     }
 
-    @Parameters({"driverConfigEnabled"})
-    @AfterMethod
-    public void cleanUp(@Optional("true") String driverConfigEnabled) {
-        if (Boolean.parseBoolean(driverConfigEnabled)) {
-            driver.close();
-            driver.quit();
-        }
-    }
+   @Parameters({"driverConfigEnabled"})
+   @AfterMethod
+   public void cleanUp(@Optional("true") String driverConfigEnabled) {
+       if (Boolean.parseBoolean(driverConfigEnabled)) {
+           driver.close();
+           driver.quit();
+       }
+   }
 
     @Parameters({"driverConfigEnabled"})
     @AfterMethod(alwaysRun = true)
@@ -421,10 +425,13 @@ public class BasePage {
     }
 
 
+<<<<<<< HEAD
     // endregion
 
 
 
+=======
+>>>>>>> com.espn
     // endregion
 
 }

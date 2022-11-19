@@ -23,9 +23,12 @@ public class GenerateData {
         return faker.name().lastName();
     }
 
+<<<<<<< HEAD
     public static String job() {
         return faker.job().title();
     }
+=======
+>>>>>>> com.espn
 
     public static String email() {
         String[] domains = {"gmail.com", "yahoo.com", "me.com", "live.com", "hotmail.com"};
