@@ -8,5 +8,18 @@
 
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="http://automationpractice.com"/>
+    <test name="Test">
+        
+        <classes>
+            <class name="TestFiles.HomePageTest"></class>
+            <class name="TestFiles.AddToCartPageTest"></class>
+            <class name="TestFiles.EndToEndTest"></class>
+            <class name="TestFiles.AccountCreationPageTest"></class>
+            <class name="TestFiles.SearchResultPageTest"></class>
+            <class name="TestFiles.OrderPageTest"></class>
+            <class name="TestFiles.IndexPageTest"></class>
+            <class name="TestFiles.LogInPageTest"></class>
+        </classes>
+    </test>
 
 </suite>

@@ -79,11 +79,9 @@ public class BasePage {
 
     @Parameters({"driverConfigEnabled", "browser", "url"})
     @BeforeMethod
-<<<<<<< HEAD
+
     public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("https://freecrm.com") String url) {
-=======
-    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("http://espn.com") String url) {
->>>>>>> com.espn
+
         if (Boolean.parseBoolean(driverConfigEnabled)) {
             driverInit(browser);
             driver.get(url);
@@ -285,9 +283,6 @@ public class BasePage {
         return driver.findElement(by);
     }
 
-    // endregion
-
-    // endregion
 
     // region Helper Methods
     private static void driverInit(String browser) {
@@ -425,13 +420,5 @@ public class BasePage {
     }
 
 
-<<<<<<< HEAD
-    // endregion
-
-
-
-=======
->>>>>>> com.espn
-    // endregion
 
 }
