@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class HomePage extends BasePage {
 
     @FindBy(xpath = "//ul[@class='main-nav-links']/li[1]/a[@id='navChecking']")
@@ -28,33 +30,23 @@ public class HomePage extends BasePage {
     @FindBy(id = "shopForCar")
     public WebElement shopForCarLink;
 
-    @FindBy(id = "NAV_WEALTH_MANAGEMENT")
-    public WebElement wealthManagementLink;
-
-
-    @FindBy(id = "footer_bofa_careers")
-    public WebElement careerLink;
-
     @FindBy(id = "finCenterLocator")
     public WebElement findClosetCenterLink;
 
-    @FindBy(id = "NAV_BUSINESS_ADVANTAGE")
-    public WebElement smallBusinessLink;
-
     @FindBy(id = "useAutoLoanCalculator")
     public WebElement autoLoanCalculatorLink;
-
-    @FindBy(id = "visitBetterMoneyHabitsTabletUp")
-    public WebElement visitBetterMoneyHabitButton;
-
-    @FindBy(xpath = "//ul[@class='main-nav-links']/li[7]/a[@id='navInvesting']")
-    public WebElement investingButton;
 
     @FindBy(xpath = "//a[@id='NAV_EN_ES']")
     public WebElement ChangeLaguage;
 
     @FindBy(xpath = "//a[@id='NAV_EN_ES']")
     public WebElement EnglishPageIndication;
+
+    @FindBy(xpath = "(//ul[@role='navigation'])[1]/li")
+    public List<WebElement> MainNavigationBar;
+
+    @FindBy(xpath = "//a[contains(@id,'getCompleteDetails')]")
+    public WebElement SecurityDetalisBtn;
 
 
 
@@ -93,7 +85,8 @@ public class HomePage extends BasePage {
     }
 
     public WealthManagementPage clickWealthManagementLink() {
-        clickOnElement(wealthManagementLink);
+
+        clickAnElementMatchingText(MainNavigationBar, "Wealth Management");
         return new WealthManagementPage();
     }
 
@@ -108,7 +101,8 @@ public class HomePage extends BasePage {
         return new FinancialCenterPage();
     }
     public SmallBusinessPage clickSmallBusinessLink(){
-        clickOnElement(smallBusinessLink);
+
+        clickAnElementMatchingText(MainNavigationBar, "Small Business");
         return  new SmallBusinessPage();
     }
 
@@ -116,6 +110,12 @@ public class HomePage extends BasePage {
         clickOnElement(autoLoansButton);
         clickOnElement(autoLoanCalculatorLink);
         return new AutoLoanCalculator();
+    }
+
+    public void NavigateToSecurityPage()
+    {
+        clickAnElementMatchingText(MainNavigationBar, "Security");
+        moveToElementAndClick(SecurityDetalisBtn);
     }
 
 }

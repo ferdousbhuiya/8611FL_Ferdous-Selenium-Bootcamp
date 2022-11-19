@@ -25,7 +25,7 @@ public class SearchResultPage extends BasePage {
     }
 
     public ItemPage selectItem(){
-        moveToElementAndClick(allItemsResults.get(2).findElement(By.tagName("a")));
+        moveToElementAndClick(allItemsResults.get(10).findElement(By.tagName("a")));
         switchToTab();
         return  new ItemPage();
     }

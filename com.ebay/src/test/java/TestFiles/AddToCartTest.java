@@ -19,7 +19,7 @@ public class AddToCartTest extends BasePage {
         ItemPage itemPage = new ItemPage();
         homePage.searchForItems();
         searchResultPage.selectItem();
-        itemPage.addToCartWithNoThankYouButton();
+        itemPage.AddToCart();
         boolean flag = isElementVisible(homePage.numberOfItem);
         String text = homePage.numberOfItem.getText();
         Assert.assertEquals(text,"1");
@@ -43,7 +43,7 @@ public class AddToCartTest extends BasePage {
         ItemPage itemPage = new ItemPage();
         homePage.searchForItems();
         searchResultPage.selectItem();
-        itemPage.addToCartWithNoThankYouButton();
+        itemPage.AddToCart();
         itemPage.removeItemFromCart();
         assertTrue(isElementVisible(itemPage.dontHaveAnyItemText));
     }

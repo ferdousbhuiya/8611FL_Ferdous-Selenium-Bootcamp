@@ -8,15 +8,8 @@
 
     <parameter name="browser" value="chrome"/>
     <parameter name="url" value="http://verizon.com"/>
-<<<<<<< HEAD
-<test name="Test">
 
-    <classes>
-        <class name="></class>
-    </classes>
-</test>
-</suite>
-=======
+
 <test name="test">
     
     <classes>
@@ -31,4 +24,3 @@
     </classes>
 </test>
 </suite>
->>>>>>> com.verizon
