@@ -2,6 +2,7 @@ package TestFiles;
 
 import PageLibrary.DealerPage;
 import PageLibrary.HomePage;
+import PageLibrary.LeaseAndFinancingPage;
 import base.BasePage;
 import org.testng.annotations.Test;
 
@@ -13,7 +14,12 @@ public class TestContactDealer extends BasePage {
     @Test
     public void testContactDealer() throws SQLException {
         HomePage homePage =new HomePage();
-        homePage.navigateToLeaseAndFinancingPage().contactDealer().getTheDealerForm().fillOutDealerForm();
+        LeaseAndFinancingPage leaseAndFinancingPage = new LeaseAndFinancingPage();
+        DealerPage dealerPage = new DealerPage();
+        homePage.navigateToLeaseAndFinancingPage();
+        leaseAndFinancingPage.contactDealer();
+        dealerPage.getTheDealerForm();
+        dealerPage.fillOutDealerForm();
         waitForVisibilityOfElement(DealerPage.thankYouMessage);
         assertTrue(DealerPage.thankYouMessage.isDisplayed());
 

@@ -53,12 +53,11 @@ public class DealerPage extends BasePage {
         return new DealerPage();
     }
 
-    public void fillOutDealerForm() throws SQLException {
-        String query = "SELECT phoneNumber FROM locations.phonenumber where id =1;";
+    public void fillOutDealerForm()  {
         clearSendKeysToElement(firstName, GenerateData.firstName());
         clearSendKeysToElement(lastName, GenerateData.lastName());
         clearSendKeysToElement(email, GenerateData.email());
-        clearSendKeysToElement(phone, db.executeQueryReadOne(query).toString());
+        clearSendKeysToElement(phone, GenerateData.mobilePhone());
         clickOnElement(checkBox);
         clickOnElement(checkBox1);
         clickOnElement(submitButton);

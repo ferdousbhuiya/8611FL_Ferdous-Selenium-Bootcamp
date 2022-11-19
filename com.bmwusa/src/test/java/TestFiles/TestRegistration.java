@@ -1,6 +1,7 @@
 package TestFiles;
 
 import PageLibrary.HomePage;
+import PageLibrary.LoginPage;
 import PageLibrary.RegistrationPage;
 import base.BasePage;
 import org.testng.annotations.Test;
@@ -14,7 +15,11 @@ public class TestRegistration extends BasePage {
     @Test
     public void testRegistration() throws SQLException {
         HomePage homePage =new HomePage();
-        homePage.navigateToLoginPage().clickRegisterButton().fillOutRegistrationForm();
+        LoginPage loginPage = new LoginPage();
+        RegistrationPage registrationPage = new RegistrationPage();
+        homePage.navigateToLoginPage();
+        loginPage.clickRegisterButton();
+        registrationPage.fillOutRegistrationForm();
         switchToFrameByElement(RegistrationPage.iframe);
         waitForVisibilityOfElement(RegistrationPage.challengeImages);
         assertTrue(RegistrationPage.challengeImages.isDisplayed());

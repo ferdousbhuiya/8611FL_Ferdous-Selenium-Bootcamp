@@ -44,15 +44,13 @@ public class GetYourQuotePage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void fillOutTheForm() throws SQLException {
-        String qury="SELECT phoneNumber FROM locations.phonenumber where id =1;";
+    public void fillOutTheForm()  {
         clearSendKeysToElement(firstNameInputField, GenerateData.firstName());
         clearSendKeysToElement(lastNameInputField, GenerateData.lastName());
         clearSendKeysToElement(emailInputField, GenerateData.email());
-        clearSendKeysToElement(phoneInputField, db.executeQueryReadOne(qury).toString());
+        clearSendKeysToElement(phoneInputField, GenerateData.mobilePhone());
         clickOnElement(termCheckBox1);
         clickOnElement(termCheckBox2);
-//        clickOnElement(termCheckBox3);
         waitForVisibilityOfElement(submitButton);
         clickOnElement(submitButton);
 

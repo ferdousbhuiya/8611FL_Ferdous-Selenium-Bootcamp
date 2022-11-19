@@ -1,7 +1,6 @@
 package TestFiles;
 
-import PageLibrary.GetYourQuotePage;
-import PageLibrary.HomePage;
+import PageLibrary.*;
 import base.BasePage;
 import org.testng.annotations.Test;
 
@@ -12,7 +11,13 @@ public class TestCustomizeCar extends BasePage {
     @Test
     public void testCustomizeCar(){
         HomePage homePage =new HomePage();
-        homePage.clickBuildYourOwnLink().clickSelect().clickCustomizeThisBuild().customizeCar();
+        BuildYourOwnPage buildYourOwnPage= new BuildYourOwnPage();
+        IxSportActivityVehiclePage ixSportActivityVehiclePage = new IxSportActivityVehiclePage();
+        CustomizePage customizePage = new CustomizePage();
+        homePage.clickBuildYourOwnLink();
+        buildYourOwnPage.clickSelect();
+        ixSportActivityVehiclePage.clickCustomizeThisBuild();
+        customizePage.customizeCar();
         switchToTab();
         waitForVisibilityOfElement(GetYourQuotePage.driverInformationText);
         assertTrue(GetYourQuotePage.driverInformationText.isDisplayed());

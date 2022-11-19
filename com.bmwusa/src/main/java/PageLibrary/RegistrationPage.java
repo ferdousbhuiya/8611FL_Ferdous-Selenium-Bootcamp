@@ -43,16 +43,15 @@ public class RegistrationPage extends BasePage {
     public RegistrationPage() {
         PageFactory.initElements(driver, this);
     }
-    public void fillOutRegistrationForm() throws SQLException, SQLException {
+    public void fillOutRegistrationForm()  {
 
-        //String query="SELECT password FROM locations.password where id=1;";
         clickOnElement(salutation);
         clickOnElement(salutationDropDown.get(2));
         clearSendKeysToElement(firstName, GenerateData.firstName());
         clearSendKeysToElement(lastName,GenerateData.lastName());
         clearSendKeysToElement(email,GenerateData.email());
-        clearSendKeysToElement(password,GenerateData.password());
-        //clearSendKeysToElement(password,db.executeQueryReadOne(query).toString());
+        clearSendKeysToElement(password, " Abce34567#");
+
         jsClickOnElement(checkBox);
         clickOnElement(registerNowButton);
     }

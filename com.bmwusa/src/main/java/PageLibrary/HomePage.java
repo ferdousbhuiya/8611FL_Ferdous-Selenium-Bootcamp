@@ -28,8 +28,8 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//div[@class='globalnav-primary-drop-down-nav__content globalnav-primary-drop-down-nav__grid-6-6']/div[2]/nav[2]//ul/li[1]/a")
     public WebElement leaseAndFinancingLink;
 
-    @FindBy(xpath = "//div[@class='gm-style']//iframe")
-    public static WebElement iframe;
+    @FindBy(xpath = "//input[@id='zip_code']")
+    public static WebElement ZipCodeEntry;
 
     @FindBy(id = "zip_code")
     public WebElement zipCodeInputField;
@@ -116,6 +116,7 @@ public class HomePage extends BasePage {
     public LeaseAndFinancingPage navigateToLeaseAndFinancingPage() {
         waitForVisibilityOfElement(shoppingLink);
         moveToElementAndClick(shoppingLink);
+        clearSendKeysToElement(ZipCodeEntry, GenerateData.zipCode());
         clickOnElement(leaseAndFinancingLink);
         return new LeaseAndFinancingPage();
     }

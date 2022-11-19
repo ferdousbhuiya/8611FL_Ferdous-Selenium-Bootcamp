@@ -1,7 +1,6 @@
 package TestFiles;
 
-import PageLibrary.GetYourQuotePage;
-import PageLibrary.HomePage;
+import PageLibrary.*;
 import base.BasePage;
 import org.testng.annotations.Test;
 
@@ -9,11 +8,18 @@ import java.sql.SQLException;
 
 public class TestGetQuote extends BasePage {
     @Test
-    public void testGetQuote() throws SQLException, SQLException {
+    public void testGetQuote()  {
         HomePage homePage = new HomePage();
-        GetYourQuotePage customizePage = homePage.clickBuildYourOwnLink().clickSelect().clickCustomizeThisBuild().customizeCar();
+        BuildYourOwnPage buildYourOwnPage = new BuildYourOwnPage();
+        IxSportActivityVehiclePage ixSportActivityVehiclePage = new IxSportActivityVehiclePage();
+        CustomizePage customizePage = new CustomizePage();
+        GetYourQuotePage getYourQuotePage = new GetYourQuotePage();
+        homePage.clickBuildYourOwnLink();
+        buildYourOwnPage.clickSelect();
+        ixSportActivityVehiclePage.clickCustomizeThisBuild();
+        customizePage.customizeCar();
         switchToTab();
-        customizePage.fillOutTheForm();
+        getYourQuotePage.fillOutTheForm();
 
     }
 
