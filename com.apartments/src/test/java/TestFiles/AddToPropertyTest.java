@@ -12,7 +12,7 @@ import static org.testng.AssertJUnit.assertTrue;
 public class AddToPropertyTest extends BasePage {
 
     @Test
-    public void testAddProperty() throws SQLException {
+    public void addPropertyTest() throws SQLException {
 
         HomePage homePage = new HomePage();
         homePage.signInUsingExistentAccount();

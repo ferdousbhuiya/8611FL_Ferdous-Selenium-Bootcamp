@@ -19,7 +19,7 @@ public class CreateAccountTest extends BasePage {
     }
 
     @Test
-    public void validateToMyAccount() throws SQLException, InterruptedException {
+    public void validateToMyAccount() throws SQLException {
         HomePage homePage = new HomePage();
         homePage.signInUsingExistentAccount();
         homePage.navigateToMyAccount();

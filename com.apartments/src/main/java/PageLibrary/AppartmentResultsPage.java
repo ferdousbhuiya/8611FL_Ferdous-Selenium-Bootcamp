@@ -11,6 +11,9 @@ public class AppartmentResultsPage extends BasePage {
     @FindBy(xpath = "//label[contains(text(),'Renter View')]")
     public static WebElement renterViewText;
 
+    @FindBy(xpath = "//h3[@id='mapResultBox']")
+    public WebElement MoreAppartment;
+
 
     public AppartmentResultsPage()
     {

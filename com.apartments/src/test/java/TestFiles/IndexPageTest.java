@@ -2,6 +2,7 @@ package TestFiles;
 
 import PageLibrary.*;
 import base.BasePage;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.sql.SQLException;
@@ -11,7 +12,7 @@ import static org.testng.AssertJUnit.assertTrue;
 public class IndexPageTest extends BasePage {
 
     @Test
-    public void navigateToNewAccountPageTest() throws SQLException {
+    public void navigateToNewAccountPageTest()  {
         IndexPage indexPage = new IndexPage();
         NewAccountPage newAccountPage = new NewAccountPage();
         indexPage.CreateNewAccount();
@@ -33,9 +34,11 @@ public class IndexPageTest extends BasePage {
     public void validationOfMoreApptPage()
     {
         IndexPage indexPage = new IndexPage();
-        MoreAppartmentPage moreAppartmentPage = new MoreAppartmentPage();
-        moreAppartmentPage=indexPage.searchMoreAppartment();
-
+        AppartmentResultsPage appartmentResultsPage= new AppartmentResultsPage();
+        indexPage.searchMoreAppartment();
+        String actual = (appartmentResultsPage.MoreAppartment.getText());
+        String actu = actual.substring(actual.indexOf("")+6);
+        Assert.assertEquals(actu, "Apartments Available");
     }
 
     @Test
@@ -43,7 +46,9 @@ public class IndexPageTest extends BasePage {
     {
         IndexPage indexPage= new IndexPage();
         EspanolPage espanolPage = new EspanolPage();
-        espanolPage = indexPage.changeLanguage();
+        indexPage.changeLanguage();
+        String text = espanolPage.EspanolLanguage.getText();
+        Assert.assertEquals(text, "Español");
 
     }
 }

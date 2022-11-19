@@ -15,48 +15,9 @@ public class IndexPage extends BasePage {
     @FindBy(xpath = "//ul[@id='menuNavigation']/li")
     public List<WebElement> menuNavigationList;
 
-    @FindBy(xpath = "//ul[@id='menuNavigation']/li[4]/ul/li[1]/a")
-    public WebElement subMenuAccount;
-
-    @FindBy(xpath = "//i[@id='headerMeunIcon']")
-    public List<WebElement> menuBarInHeading;
-
-    @FindBy(id = "quickSearchLookup")
-    public WebElement searchInput;
-
-    @FindBy(id = "username")
-    public WebElement userNameSignIn;
-
-    @FindBy(id = "password")
-    public WebElement passwordForSignin;
-
-    @FindBy(xpath = "//a[normalize-space()='Sign In']")
-    public WebElement signInButton;
-
-    @FindBy(id = "headerAddProperty")
-    public WebElement addAProperty;
-
     @FindBy(xpath = "//a[contains(text(),'Sign Up')]")
     public WebElement SignUpForNewAccount;
 
-    @FindBy(xpath = "//a[contains(text(),'Sign In')]")
-    public WebElement SigninForExistingAccount;
-
-    @FindBy(xpath = "//a[contains(text(),'Search')]")
-    public WebElement searchButton;
-
-
-    @FindBy(xpath = "//div[@class='modalBody']//iframe")
-    public static WebElement iframe3ForAppleLogin;
-
-    @FindBy(xpath = "//div[@id='loginContainer']//iframe")
-    public static WebElement iframeLoginContainer;
-
-    @FindBy(id = "googleLogin")
-    public WebElement googleLogIn;
-
-    @FindBy(id = "applelggin")
-    public WebElement Applelogin;
 
     @FindBy(xpath = "//a[contains(text(),'View More')]")
     public WebElement moreAppartment;
@@ -101,7 +62,6 @@ public class IndexPage extends BasePage {
         waitForVisibilityOfElement(Espanol);
         hoverOverElement(Espanol);
         jsClickOnElement(Espanol);
-
         return new EspanolPage();
     }
 

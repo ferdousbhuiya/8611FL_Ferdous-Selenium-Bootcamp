@@ -22,7 +22,7 @@ public class MyAccountsPage extends BasePage {
 
     public String getText() throws InterruptedException {
         switchToFrameByElement(iframeOfAccountSettings);
-        Thread.sleep(12000); // Takes very long time to load the oage
+        Thread.sleep(12000); // Takes very long time to load the page
         String te = MyAccountText.getText();
         return te;
     }
