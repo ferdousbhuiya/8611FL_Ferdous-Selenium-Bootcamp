@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class ProfitCalculator extends BasePage {
+public class ProfitCalculatorPage extends BasePage {
 
     @FindBy(xpath = "//a[normalize-space()='Tools']")
     public WebElement ToolsButton;
@@ -21,10 +21,6 @@ public class ProfitCalculator extends BasePage {
 
   @FindBy(xpath = "//label[@for='forexSearchText']")
   public WebElement searchForexCurrencyButton;
-
-  @FindBy(xpath = "//tr[contains(@class,'row')]")
-  public List<WebElement> suggestionList;
-
 
   @FindBy(xpath = "//body[1]/div[5]/section[1]/div[5]/form[1]/fieldset[1]/div[1]/div[1]/div[2]/div[1]/table[1]/tbody[1]/tr[4]")
   public WebElement selectrow;
@@ -46,16 +42,15 @@ public class ProfitCalculator extends BasePage {
 public WebElement LossOrProfitValue;
 
 
-    public ProfitCalculator()
+    public ProfitCalculatorPage()
     {
         PageFactory.initElements(driver, this);
     }
 
 
-    public void ProfitCalculator()
+    public void calculateProfit()
     {
-        hoverOverElement(ToolsButton);
-        jsClickOnElement(ProfitCalculatorLink);
+       jsClickOnElement(ProfitCalculatorLink);
         hoverOverElement(forexSearchinputBox);
         clearSendKeysToElement(forexSearchinputBox, excel.readStringArrays("Sheet1")[1][2]);
         clickOnElement(selectrow);

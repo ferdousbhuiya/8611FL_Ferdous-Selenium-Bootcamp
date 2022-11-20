@@ -196,12 +196,7 @@ public class UserAccountPage extends BasePage {
         clickOnElement(deleteIcon);
         clickOnElement(confirmDeletion);
     }
-    public void dragAndDropElement(){
-        waitForThePresenceOfTheElement(By.xpath("//div[@id='main-nav']/div[1]"));
-        hoverOverElement(mainNavBar.get(0));
-        clickOnElement(mainNavBar.get(0).findElement(By.tagName("a")));
-        dragAndDrop(from,to);
-    }
+
     public void logOut(){
         waitForVisibilityOfElement(leftMenuDropDown);
         jsClickOnElement(leftMenuDropDown);

@@ -25,7 +25,7 @@ public class HomePageTest extends BasePage {
 
 
     @Test
-    public void SignUpTest() throws InterruptedException {
+    public void SignUpTest()  {
         HomePage homePage= new HomePage();
         SigninPage signinPage = new SigninPage();
         String FirstName = GenerateData.firstName();

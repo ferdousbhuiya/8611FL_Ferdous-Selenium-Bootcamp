@@ -21,9 +21,9 @@
         <module>com.bmwusa</module>
         <module>com.mbusa</module>
         <module>com.apartments</module>
-        <module>com.streeteasy</module>
         <module>com.ebay</module>
         <module>com.automationpractice</module>
+        <module>com.booking</module>
     </modules>
 
     <properties>

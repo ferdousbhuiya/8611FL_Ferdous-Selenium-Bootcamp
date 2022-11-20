@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class HomePage extends BasePage {
 
 
@@ -47,6 +49,8 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//label[@class='searchGlassIcon js-magnifying-glass-icon']")
     public WebElement Searchbutton;
 
+    @FindBy(xpath = "//ul[@class='navMenuUL']/li")
+    public List<WebElement> NavMunuUL;
     @FindBy(xpath = "//a[normalize-space()='Analysis']")
     public WebElement Analysismenu;
 
@@ -92,7 +96,7 @@ public class HomePage extends BasePage {
 
     public AnalysisPage Analysis()
     {
-        moveToElementAndClick(Analysismenu);
+        clickAnElementMatchingText(NavMunuUL, "Analysis");
         return new AnalysisPage();
     }
 
@@ -105,7 +109,8 @@ public class HomePage extends BasePage {
 
     public void moveToTechnicalAnalysis()
     {
-        hoverOverElement(TechnicalAnalysis);
+        clickAnElementMatchingText(NavMunuUL, "Technical");
+        //hoverOverElement(TechnicalAnalysis);
         scrollDown(CandleStickpattern);
         jsClickOnElement(CandleStickpattern);
     }
@@ -113,6 +118,12 @@ public class HomePage extends BasePage {
     public void marketindicesList()
     {
         jsClickOnElement(MarketIndices);
+    }
+
+    public ProfitCalculatorPage tools()
+    {
+        clickAnElementMatchingText(NavMunuUL, "Tools");
+        return new ProfitCalculatorPage();
     }
 
 }

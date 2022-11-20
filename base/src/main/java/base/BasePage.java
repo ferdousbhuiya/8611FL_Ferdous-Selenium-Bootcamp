@@ -80,7 +80,7 @@ public class BasePage {
     @Parameters({"driverConfigEnabled", "browser", "url"})
     @BeforeMethod
 
-    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("http://bmwusa.com") String url) {
+    public void driverSetup(@Optional("true") String driverConfigEnabled, @Optional("chrome") String browser, @Optional("https://freecrm.com") String url) {
         if (Boolean.parseBoolean(driverConfigEnabled)) {
             driverInit(browser);
             driver.get(url);
@@ -376,25 +376,7 @@ public class BasePage {
     public void scrollDown(WebElement element){
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
     }
-    public void dragAndDrop(WebElement from, WebElement to){
-        JavascriptExecutor js = (JavascriptExecutor)driver;
-        js.executeScript("function createEvent(typeOfEvent) {\n" + "var event =document.createEvent(\"CustomEvent\");\n"
-                + "event.initCustomEvent(typeOfEvent,true, true, null);\n" + "event.dataTransfer = {\n" + "data: {},\n"
-                + "setData: function (key, value) {\n" + "this.data[key] = value;\n" + "},\n"
-                + "getData: function (key) {\n" + "return this.data[key];\n" + "}\n" + "};\n" + "return event;\n"
-                + "}\n" + "\n" + "function dispatchEvent(element, event,transferData) {\n"
-                + "if (transferData !== undefined) {\n" + "event.dataTransfer = transferData;\n" + "}\n"
-                + "if (element.dispatchEvent) {\n" + "element.dispatchEvent(event);\n"
-                + "} else if (element.fireEvent) {\n" + "element.fireEvent(\"on\" + event.type, event);\n" + "}\n"
-                + "}\n" + "\n" + "function simulateHTML5DragAndDrop(element, destination) {\n"
-                + "var dragStartEvent =createEvent('dragstart');\n" + "dispatchEvent(element, dragStartEvent);\n"
-                + "var dropEvent = createEvent('drop');\n"
-                + "dispatchEvent(destination, dropEvent,dragStartEvent.dataTransfer);\n"
-                + "var dragEndEvent = createEvent('dragend');\n"
-                + "dispatchEvent(element, dragEndEvent,dropEvent.dataTransfer);\n" + "}\n" + "\n"
-                + "var source = arguments[0];\n" + "var destination = arguments[1];\n"
-                + "simulateHTML5DragAndDrop(source,destination);", from, to);
-    }
+
 
     public WebElement waitForThePresenceOfTheElement(By by) {
         return webDriverWait.until(ExpectedConditions.presenceOfElementLocated(by));

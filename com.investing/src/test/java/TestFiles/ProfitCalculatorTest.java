@@ -1,6 +1,6 @@
 package TestFiles;
 
-import PageLibrary.ProfitCalculator;
+import PageLibrary.ProfitCalculatorPage;
 import base.BasePage;
 import org.testng.annotations.Test;
 
@@ -12,9 +12,9 @@ public class ProfitCalculatorTest extends BasePage {
     @Test
     public void profitcalculatorTesting()
     {
-        ProfitCalculator profitCalculator = new ProfitCalculator();
-        profitCalculator.ProfitCalculator();
-        boolean flag = profitCalculator.LossOrProfitValue.isDisplayed();
+        ProfitCalculatorPage profitCalculatorPage = new ProfitCalculatorPage();
+        profitCalculatorPage.calculateProfit();
+        boolean flag = profitCalculatorPage.LossOrProfitValue.isDisplayed();
         assertTrue(flag);
 
     }
