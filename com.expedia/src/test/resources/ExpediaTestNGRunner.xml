@@ -7,7 +7,7 @@
     </listeners>
 
     <parameter name="browser" value="chrome"/>
-    <parameter name="url" value="http://expedia.com"/>
+    <parameter name="url" value="12"/>
 
     <test name="Test">
         <classes>

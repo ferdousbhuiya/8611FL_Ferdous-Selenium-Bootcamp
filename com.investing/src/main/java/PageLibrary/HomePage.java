@@ -100,9 +100,9 @@ public class HomePage extends BasePage {
         return new AnalysisPage();
     }
 
-    public SearchResultPage searchItems()
+    public SearchResultPage searchItems(String searchItem)
     {
-        sendKeysToElement(SearchBox, "dollar");
+        sendKeysToElement(SearchBox, searchItem);
         jsClickOnElement(Searchbutton);
         return new SearchResultPage();
     }

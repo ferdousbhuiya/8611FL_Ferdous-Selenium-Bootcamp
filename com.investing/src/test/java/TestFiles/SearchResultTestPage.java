@@ -13,12 +13,14 @@ public class SearchResultTestPage extends BasePage {
     @Test
     public void searchresultTest()
     {
+
         HomePage homePage = new HomePage();
         SearchResultPage searchResultPage = new SearchResultPage();
-        homePage.searchItems();
+        String item = excel.readStringArrays("Sheet4")[0][0];
+        homePage.searchItems(item);
         waitForVisibilityOfElement(searchResultPage.subHeadingOfSearchPage);
         String actual = searchResultPage.subHeadingOfSearchPage.getText();
-        Assert.assertEquals(actual, "Search Results for \"dollar\":");
+        Assert.assertEquals(actual, "Search Results for "+item+":");
 
     }
 

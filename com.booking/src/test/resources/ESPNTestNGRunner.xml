@@ -1,17 +1,13 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 
-<suite name="Optimum" verbose="1" >
+<suite name="ESPN" verbose="1" >
 
     <listeners>
         <listener class-name="listeners.AnnotationTransformer"/>
     </listeners>
 
     <parameter name="browser" value="chrome"/>
-    <parameter name="url" value="https://www.booking.com/"/>
+    <parameter name="url" value="http://espn.com"/>
 
-    <test name="test">
-        <classes>
-<!--            <class name=""/>-->
-        </classes>
-    </test>
+
 </suite>

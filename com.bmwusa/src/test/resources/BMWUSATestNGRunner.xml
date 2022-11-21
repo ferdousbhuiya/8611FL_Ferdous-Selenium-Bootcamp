@@ -10,7 +10,7 @@
     <parameter name="url" value="http://bmwusa.com"/>
     <test name="Test">
         <classes>
-            <class name="TestFiles.TestChoosingModels"></class>
+            <class name="TestFile1s.TestChoosingModels"></class>
             <class name="TestFiles.TestContactDealer"></class>
             <class name="TestFiles.TestCustomizeCar"></class>
             <class name="TestFiles.TestEstimatePayment"></class>
