@@ -5,9 +5,8 @@
     <listeners>
         <listener class-name="listeners.AnnotationTransformer"/>
     </listeners>
-
     <parameter name="browser" value="chrome"/>
-    <parameter name="url" value="12"/>
+    <parameter name="url" value="http://expedia.com"/>
 
     <test name="Test">
         <classes>

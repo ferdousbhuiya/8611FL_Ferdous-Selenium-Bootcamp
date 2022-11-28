@@ -3,10 +3,16 @@ package TestFiles;
 import PageLibrary.HomePage;
 import PageLibrary.SigninPage;
 import base.BasePage;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import utils.GenerateData;
 
+import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.AssertJUnit.assertTrue;
 
 public class HomePageTest extends BasePage {
@@ -27,7 +33,6 @@ public class HomePageTest extends BasePage {
     @Test
     public void SignUpTest()  {
         HomePage homePage= new HomePage();
-        SigninPage signinPage = new SigninPage();
         String FirstName = GenerateData.firstName();
         String Lastname = GenerateData.lastName();
         String Email = GenerateData.email();
@@ -55,7 +60,20 @@ public class HomePageTest extends BasePage {
         Assert.assertEquals(actual, "United States - Financial Markets");
     }
 
+    @Test (dataProvider = "DifferntCredentials")
+    public void signingInwithDifferentCredentialsTest(String username, String password)
+    {
+        HomePage homePage = new HomePage();
+        SigninPage signinPage = new SigninPage();
+        homePage.SignInforExistingAccount(username, password);
+        String actualText=signinPage.invaliduserNameText.getText().trim();
+        Assert.assertEquals(actualText, "Wrong email or password. Try again.");
 
-
-
+    }@DataProvider
+    public Object[][] DifferntCredentials()
+    {
+        String [][] data;
+        data = excel.readStringArrays("Sheet5");
+        return data;
+    }
 }

@@ -10,6 +10,8 @@ public class SigninPage extends BasePage {
     @FindBy(xpath = "//span[@class='myAccount topBarText']")
     public WebElement usernameTextDisplay;
 
+    @FindBy(xpath = "//div[@id='serverErrors']")
+    public WebElement invaliduserNameText;
 
     @FindBy(xpath = "//a[normalize-space()='Verify Code']")
     public WebElement VerifyTextAfterSignup;
@@ -18,5 +20,11 @@ public class SigninPage extends BasePage {
     public SigninPage()
     {
         PageFactory.initElements(driver, this);
+    }
+
+    public String invalidTextDisplay()
+    {
+        String text=invaliduserNameText.getText().trim();
+        return text;
     }
 }

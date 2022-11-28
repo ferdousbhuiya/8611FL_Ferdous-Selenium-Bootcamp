@@ -133,4 +133,23 @@ public class Database {
         return result;
     }
 
+
+
+    // this will give the output as a String object of the entire data set available in the specified column of that table.
+    public Object[][] executeSelectQueryForDataSet(String sqlQuery) throws SQLException {
+        Statement stmt = connect.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+        ResultSet resultSet = stmt.executeQuery(sqlQuery);
+        resultSet.last();
+        int rowCount = resultSet.getRow();
+        int cellCount = resultSet.getMetaData().getColumnCount();
+        Object[][] data = new Object[rowCount][cellCount];
+        for(int row = 1; row <= rowCount; row++)
+        {
+            for( int cell = 1; cell <= cellCount; cell++){
+                data[row-1][cell-1] = resultSet.getString(cell);
+            }
+        }
+        return data;
+    }
+
 }

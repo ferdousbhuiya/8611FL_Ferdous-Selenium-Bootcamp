@@ -32,10 +32,12 @@ public class SignInPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    public void fillOutSignInForm() {
+    public void fillOutSignInForm(String userEmail, String userPassword) {
 
-        clearSendKeysToElement(emailAddressInput,excel.readStringArrays("Sheet1")[0][1]);
-        clearSendKeysToElement(passwordInput, excel.readStringArrays("Sheet1")[0][2]);
+        //String uEmail = excel.readStringArrays("Sheet1")[0][1];
+        //String uPassword = excel.readStringArrays("Sheet1")[0][2];
+        clearSendKeysToElement(emailAddressInput, userEmail);
+        clearSendKeysToElement(passwordInput, userPassword);
         jsClickOnElement(submitButton);
         waitForVisibilityOfElement(iframeParent);
         switchToFrameByElement(iframeParent);
